@@ -3,7 +3,7 @@
         <el-row>
             <el-col :span="24" >
                 <el-menu
-                    default-active="1"
+                    :default-active="this.$route.path"
                     class="el-menu-vertical-demo"
                     @open="handleOpen"
                     @close="handleClose"
@@ -11,16 +11,24 @@
                     text-color="#efefef"
                     active-text-color="#1890ff"
                     style="height:100vh;"
+                    router
                 >
-                    <el-menu-item index="1">
+                    <el-menu-item index="/dashboard">
                         <i class="el-icon-menu"></i>
                         <span slot="title">首页</span>
                     </el-menu-item>
-                    <el-menu-item index="2">
-                        <i class="el-icon-menu"></i>
-                        <span slot="title">图表</span>
-                    </el-menu-item>
-                    <el-menu-item index="3">
+                    <el-submenu index="/echarts">
+                        <template slot="title">
+                            <i class="el-icon-location"></i>
+                            <span>图表</span>
+                        </template>
+                        <el-menu-item-group>
+                            <el-menu-item index="/echarts/bar">柱状图</el-menu-item>
+                            <el-menu-item index="/echarts/line">折线图</el-menu-item>
+                            <el-menu-item index="/echarts/pie">饼状图</el-menu-item>
+                        </el-menu-item-group>
+                    </el-submenu>
+                    <el-menu-item index="/components">
                         <i class="el-icon-menu"></i>
                         <span slot="title">组件</span>
                     </el-menu-item>

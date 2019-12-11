@@ -116,7 +116,7 @@ export default {
                         password:this.ruleForm.password
                     }
                     Cookies.set('user_token',obj);
-                    this.$router.push('/');
+                    this.$router.push('/dashboard');
                     this.$refs[ruleForm].resetFields();
                 }
             })

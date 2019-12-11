@@ -17,7 +17,35 @@ export default new Router({
         {
           path: '/dashboard',
           component: () => import('@/views/dashboard'),
+          name:'Dashboard',
           meta: { title:'首页' },
+        },
+        {
+          path: '/echarts',
+          component: () => import('@/views/echarts'),
+          meta: { title:'图表' },
+          children: [
+            {
+              path:'/echarts/bar',
+              component: () => import('@/views/echarts/components/bar'),
+              meta: { title:'柱状图' },
+            },
+            {
+              path:'/echarts/line',
+              component: () => import('@/views/echarts/components/line'),
+              meta: { title:'折线图' },
+            },
+            {
+              path:'/echarts/pie',
+              component: () => import('@/views/echarts/components/pie'),
+              meta: { title:'饼状图' },
+            }
+          ]
+        },
+        {
+          path: '/components',
+          component: () => import('@/views/components'),
+          meta: { title:'组件' },
         }
       ]
     }
