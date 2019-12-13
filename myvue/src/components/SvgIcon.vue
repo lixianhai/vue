@@ -16,9 +16,6 @@ export default {
       type: String
     }
   },
-  mounted() {
-    console.log(this.iconClass, this.className)
-  },
   computed: {
     iconName() {
       return `#icon-${this.iconClass}`

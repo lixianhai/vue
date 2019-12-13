@@ -43,10 +43,15 @@ export default new Router({
           ]
         },
         {
+          path: '/profile',
+          component: () => import('@/views/profile'),
+          meta: { title:'个人中心' },
+        },
+        {
           path: '/components',
           component: () => import('@/views/components'),
           meta: { title:'组件' },
-        }
+        },
       ]
     }
   ]

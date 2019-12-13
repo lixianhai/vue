@@ -2,13 +2,13 @@
     <div class="login-container" :style ="note">
         <el-form ref="ruleForm" :model="ruleForm" :rules="rules">
             <div class="title">
-                <h2 style="margin:0 0 40px;font-size:26px;">{{$t('language.title')}}</h2>
+                <h2 style="margin:0 0 40px;font-size:26px;">{{$t('login.title')}}</h2>
                 <div class="set-language">
                     <el-dropdown trigger="click" @command="changeLanguage">
                         <img src="@/assets/languages.svg">
                         <el-dropdown-menu slot="dropdown">
-                            <el-dropdown-item command="zh">{{$t('language.zh')}}</el-dropdown-item>
-                            <el-dropdown-item command="en">{{$t('language.en')}}</el-dropdown-item>
+                            <el-dropdown-item command="zh">{{$t('login.zh')}}</el-dropdown-item>
+                            <el-dropdown-item command="en">{{$t('login.en')}}</el-dropdown-item>
                         </el-dropdown-menu>
                     </el-dropdown>
                 </div>
@@ -38,30 +38,30 @@
             </el-form-item>
             <el-row style="margin-bottom:22px;">
                 <el-col :span="24">
-                    <el-button type="primary" @click="login('ruleForm')" class="loginButton">{{$t('language.button')}}</el-button>
+                    <el-button type="primary" @click="login('ruleForm')" class="loginButton">{{$t('login.button')}}</el-button>
                 </el-col>
             </el-row>
             <el-row class="info">
                 <el-col :span="16">
                     <el-row>
                         <el-col :span="10">
-                            {{$t('language.name')}}: admin
+                            {{$t('login.name')}}: admin
                         </el-col>
                         <el-col :span="10">
-                            {{$t('language.password')}}: {{$t('language.passwordText')}}
+                            {{$t('login.password')}}: {{$t('login.passwordText')}}
                         </el-col>
                     </el-row>
                     <el-row>
                         <el-col :span="10">
-                            {{$t('language.name')}}: editor
+                            {{$t('login.name')}}: editor
                         </el-col>
                         <el-col :span="10">
-                            {{$t('language.password')}}: {{$t('language.passwordText')}}
+                            {{$t('login.password')}}: {{$t('login.passwordText')}}
                         </el-col>
                     </el-row>
                 </el-col>
                 <el-col :span="8">
-                    <el-button type="primary">{{$t('language.otherLogn')}}</el-button>
+                    <el-button type="primary">{{$t('login.otherLogn')}}</el-button>
                 </el-col>
             </el-row>
         </el-form>
@@ -118,6 +118,7 @@ export default {
                     Cookies.set('user_token',obj);
                     this.$router.push('/dashboard');
                     this.$refs[ruleForm].resetFields();
+                    localStorage.removeItem("navInfo");
                 }
             })
         },
