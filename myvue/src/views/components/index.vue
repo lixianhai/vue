@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="content-wrap">
         组件components
     </div>
 </template>

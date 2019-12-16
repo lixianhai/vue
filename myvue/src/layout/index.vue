@@ -15,7 +15,7 @@
           <div>
               <Tags />
           </div>
-          <div class="p-20">
+          <div>
               <AppMain />
           </div>
       </div>
@@ -46,9 +46,6 @@ export default {
     }
     .rightContentWrap {
         margin-left: 210px;
-        .p-20 {
-            padding: 20px;
-        }
         .headers_wrap {
             height: 50px;
             overflow: hidden;

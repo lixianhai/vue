@@ -24,9 +24,20 @@
                             <span>{{$t('navBar.charts')}}</span>
                         </template>
                         <el-menu-item-group>
+                            <el-menu-item index="/echarts/keyboard">{{$t('navBar.keyboard')}}</el-menu-item>
                             <el-menu-item index="/echarts/bar">{{$t('navBar.barChart')}}</el-menu-item>
                             <el-menu-item index="/echarts/line">{{$t('navBar.lineChart')}}</el-menu-item>
+                            <el-menu-item index="/echarts/blend">{{$t('navBar.blendChart')}}</el-menu-item>
                             <el-menu-item index="/echarts/pie">{{$t('navBar.pieChart')}}</el-menu-item>
+                            <el-menu-item index="/echarts/scatter">{{$t('navBar.scatterChart')}}</el-menu-item>
+                            <el-menu-item index="/echarts/radar">{{$t('navBar.radarChart')}}</el-menu-item>
+                            <el-menu-item index="/echarts/tree">{{$t('navBar.treeChart')}}</el-menu-item>
+                            <el-menu-item index="/echarts/treeMap">{{$t('navBar.treeMapChart')}}</el-menu-item>
+                            <el-menu-item index="/echarts/sunburst">{{$t('navBar.sunburstChart')}}</el-menu-item>
+                            <el-menu-item index="/echarts/parallel">{{$t('navBar.parallelChart')}}</el-menu-item>
+                            <el-menu-item index="/echarts/funnel">{{$t('navBar.funnelChart')}}</el-menu-item>
+                            <el-menu-item index="/echarts/gauge">{{$t('navBar.gaugeChart')}}</el-menu-item>
+                            <el-menu-item index="/echarts/pictorialBar">{{$t('navBar.pictorialBarChart')}}</el-menu-item>
                         </el-menu-item-group>
                     </el-submenu>
                     <el-menu-item index="/components">
@@ -46,16 +57,10 @@ export default {
         }
     },
     computed: {
-        // navInfo:function() {
-        //     localStorage.removeItem("navInfo")
-        //     var isNavInfo =  window.localStorage.getItem('navInfo');
-        //     console.log(isNavInfo)
-        //     var locaNavInfo = isNavInfo == null?[]:JSON.parse(window.localStorage.getItem('navInfo'));
-        //     return locaNavInfo.length?locaNavInfo:[]
-        // }
+        
     },
     created() {
-        // console.log(this.navInfo)
+        
     },
     methods: {
         handleOpen(key, keyPath) {
@@ -65,20 +70,7 @@ export default {
             console.log(key, keyPath);
         },
         changeNavselect(index) {
-            // setTimeout(()=>{
-            //     var matched =  this.$route.matched;
-            //     var title = matched[matched.length-1].meta.title;
-            //     var path =  matched[matched.length-1].path;
-            //     var obj = {
-            //         title:title,
-            //         path:path
-            //     }
-            //     if(JSON.stringify(this.navInfo).indexOf(JSON.stringify(obj)) == -1){
-            //         this.navInfo.push(obj);
-            //     }
-            //     console.log(this.navInfo)
-            //     window.localStorage.setItem('navInfo',JSON.stringify(this.navInfo));
-            // },20)
+            this.$store.commit('navChangeTagsNavActiveClassIndex',index);
         }
     }
 }

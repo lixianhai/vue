@@ -1,7 +1,7 @@
 <template>
     <div class="tags-view-wrap">
         <el-scrollbar style="width:100%;height:100%">
-            <span @click="tagsRouter(item,index)" v-for="(item,index) in navInfo" :key="item.path" class="tags-view-item" :class="activeClass == index ? 'active':''">
+            <span @click.stop="tagsRouter(item,index)" v-for="(item,index) in navInfo" :key="item.path" class="tags-view-item" :class="tagsNavActiveClassIndex == index ? 'active':''">
                 {{item.title}}
                 <span v-if="item.title!=='首页'" @click.stop="closeTags(item)" class="el-icon-close"></span>
             </span>
@@ -12,25 +12,34 @@
 export default {
     data() {
         return {
-            activeClass:0,
             navInfo:[]
         }
     },
     watch: {
         $route:function(to) {
-            console.log(to)
+            var that = this;
             var obj = {
                 title:to.meta.title,
                 path:to.path
             }
             if(JSON.stringify(this.navInfo).indexOf(JSON.stringify(obj)) == -1) {
-                console.log(this.$t('login.en'))
                 this.navInfo.push(obj)
                 window.localStorage.setItem('navInfo',JSON.stringify(this.navInfo))
             }
+            var arr = JSON.parse(JSON.stringify(this.navInfo));
+            var index = arr.findIndex(function(item) {
+                return item.path === that.$route.path;
+            });
+            this.$store.commit('changeTagsNavActiveClassIndex',index)
         }
     },
     computed: {
+        tagsNavActiveClassIndex() {
+            return this.$store.state.tagsNavActiveClassIndex;
+        },
+        navActivePath() {
+            return this.$store.state.navActivePath;
+        },
         navInfoArr() {
             var isNavInfo = JSON.parse(window.localStorage.getItem('navInfo'));
             var navInfo = isNavInfo == null?[{title:'首页',path:'/dashboard'}]:isNavInfo;
@@ -38,21 +47,30 @@ export default {
         }
     },
     created() {
-        this.navInfo.push(...this.navInfoArr)
-        console.log(this.navInfo)
+        this.navInfo.push(...this.navInfoArr);
+        this.getNavIndex();
     },
     methods: {
         tagsRouter(item,index) {
             if(item.path !== this.$route.path) {
                 this.$router.push(item.path)
-                this.activeClass = index;
+                this.$store.commit('changeTagsNavActiveClassIndex',index)
             }
         },
         closeTags(i) {
-            console.log(this.navInfo)
             var newNavInfo = this.navInfo.filter(item=>item !== i)
             this.navInfo = newNavInfo;
             window.localStorage.setItem('navInfo',JSON.stringify(newNavInfo))
+        },
+        getNavIndex() {
+            this.$nextTick(()=>{
+                var that = this;
+                var arr = JSON.parse(JSON.stringify(this.navInfo));
+                var index = arr.findIndex(function(item) {
+                    return item.path === that.$route.path;
+                });
+                this.$store.commit('changeTagsNavActiveClassIndex',index)
+            })
         }
     }
 }

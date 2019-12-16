@@ -1,5 +1,23 @@
 <template>
     <div class="login-container" :style ="note">
+        <vue-particles
+            color="#fff"
+            :particleOpacity="0.5"
+            :particlesNumber="40"
+            shapeType="edge"
+            :particleSize="4"
+            linesColor="#fff"
+            :linesWidth="1"
+            :lineLinked="true"
+            :lineOpacity="0.4"
+            :linesDistance="150"
+            :moveSpeed="2"
+            :hoverEffect="true"
+            hoverMode="grab"
+            :clickEffect="true"
+            clickMode="push"
+        >
+        </vue-particles>
         <el-form ref="ruleForm" :model="ruleForm" :rules="rules">
             <div class="title">
                 <h2 style="margin:0 0 40px;font-size:26px;">{{$t('login.title')}}</h2>
@@ -108,7 +126,6 @@ export default {
     },
     methods: {
         login(ruleForm) {
-            console.log(121212)
             this.$refs[ruleForm].validate(valid => {
                 if(valid) {
                     var obj = {
@@ -198,5 +215,13 @@ export default {
     .info {
         font-size: 14px;
     }
+}
+#particles-js {
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    overflow: hidden;
 }
 </style>

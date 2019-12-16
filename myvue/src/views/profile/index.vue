@@ -27,7 +27,7 @@
                                 <span>Education</span>
                             </div>
                             <div class="user-bio-section-body">
-                                <div class="text-muted">JS in Computer Science from the University of Technology</div>
+                                <div class="text-muted">Computer application technology of Zhengzhou Institute of Technology</div>
                             </div>
                         </div>
                         <div class="user-skills user-bio-section">
@@ -159,7 +159,7 @@
                                             <div class="el-card is-always-shadow"><!---->
                                                 <div class="el-card__body">
                                                     <h4>Update Github template</h4> 
-                                                    <p>PanJiaChen committed 2019/4/20 20:46</p>
+                                                    <p>LiXianHai committed 2019/4/20 20:46</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -173,7 +173,7 @@
                                             <div class="el-card is-always-shadow"><!---->
                                                 <div class="el-card__body">
                                                     <h4>Update Github template</h4> 
-                                                    <p>PanJiaChen committed 2019/4/20 20:46</p>
+                                                    <p>LiXianHai committed 2019/4/20 20:46</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -187,7 +187,7 @@
                                             <div class="el-card is-always-shadow"><!---->
                                                 <div class="el-card__body">
                                                     <h4>Update Github template</h4> 
-                                                    <p>PanJiaChen committed 2019/4/20 20:46</p>
+                                                    <p>LiXianHai committed 2019/4/20 20:46</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -201,7 +201,7 @@
                                             <div class="el-card is-always-shadow"><!---->
                                                 <div class="el-card__body">
                                                     <h4>Update Github template</h4> 
-                                                    <p>PanJiaChen committed 2019/4/20 20:46</p>
+                                                    <p>LiXianHai committed 2019/4/20 20:46</p>
                                                 </div>
                                             </div>
                                         </div>
