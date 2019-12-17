@@ -1,18 +1,35 @@
 <template>
     <div class="tags-view-wrap">
         <el-scrollbar style="width:100%;height:100%">
-            <span @click.stop="tagsRouter(item,index)" v-for="(item,index) in navInfo" :key="item.path" class="tags-view-item" :class="tagsNavActiveClassIndex == index ? 'active':''">
+            <span 
+                @click.stop="tagsRouter(item,index)"
+                v-for="(item,index) in navInfo" 
+                :key="item.path" 
+                class="tags-view-item" 
+                :class="tagsNavActiveClassIndex == index ? 'active':''"
+                @contextmenu.prevent="openMenu(item,$event)"
+            >
                 {{item.title}}
                 <span v-if="item.title!=='首页'" @click.stop="closeTags(item)" class="el-icon-close"></span>
             </span>
         </el-scrollbar>
+        <ul class="contextmenu" v-show="visible" :style="{top:top+'px',left:left+'px'}">
+            <li @click="refreshSelectedTag(selectedTag)">刷新</li>
+            <li @click="closeSelectedTag(selectedTag)">关闭</li>
+            <li @click="closeOthersTags(selectedTag)">关闭其他</li>
+            <li @click="closeAllTags(selectedTag)">关闭所有</li>
+        </ul>
     </div>
 </template>
 <script>
 export default {
     data() {
         return {
-            navInfo:[]
+            navInfo: [],
+            visible: false,
+            selectedTag: {},
+            top: 0,
+            left: 0
         }
     },
     watch: {
@@ -58,9 +75,21 @@ export default {
             }
         },
         closeTags(i) {
-            var newNavInfo = this.navInfo.filter(item=>item !== i)
-            this.navInfo = newNavInfo;
-            window.localStorage.setItem('navInfo',JSON.stringify(newNavInfo))
+            this.$nextTick(()=>{
+                var newNavInfo = this.navInfo.filter(item=>item !== i)
+                var index = this.navInfo.length-1;
+                this.navInfo = newNavInfo;
+                window.localStorage.setItem('navInfo',JSON.stringify(newNavInfo))
+                this.prveTagsClass(i)
+            })
+        },
+        prveTagsClass(newPath) {
+            if(newPath.path == this.$route.path) {
+                var path = this.navInfo[this.navInfo.length-1].path;
+                this.$router.push(path)
+            }else {
+                this.$store.commit('removeTagsNavActiveClassIndex');
+            }
         },
         getNavIndex() {
             this.$nextTick(()=>{
@@ -71,6 +100,38 @@ export default {
                 });
                 this.$store.commit('changeTagsNavActiveClassIndex',index)
             })
+        },
+        openMenu(item, e) {
+            this.left = e.clientX + 15;
+            this.top = e.clientY;
+            this.visible = true;
+            this.selectedTag = item;
+        },
+        refreshSelectedTag(view) {
+            this.$router.push(view.path);
+            this.visible = false;
+        },
+        closeSelectedTag(view) {
+            let newNavInfo = this.navInfo.filter(item=>item.title !== view.title)
+            this.navInfo = newNavInfo;
+            window.localStorage.setItem('navInfo',JSON.stringify(newNavInfo))
+            this.visible = false;
+            this.prveTagsClass(view)
+        },
+        closeOthersTags(view) {
+            var newNavInfo = [view];
+            this.navInfo = newNavInfo;
+            window.localStorage.setItem('navInfo',JSON.stringify(newNavInfo));
+            this.$store.commit('changeTagsNavActiveClassIndex',0)
+            this.$router.push(view.path)
+            this.visible = false;
+        },
+        closeAllTags(view) {
+            this.navInfo = [];
+            window.localStorage.setItem('navInfo',JSON.stringify([]));
+            this.$store.commit('changeTagsNavActiveClassIndex',0)
+            this.$router.push('/dashboard')
+            this.visible = false;
         }
     }
 }
@@ -137,6 +198,28 @@ export default {
             border-radius: 50%;
             position: relative;
             margin-right: 2px;
+        }
+    }
+}
+.contextmenu {
+    margin: 0;
+    background: #fff;
+    z-index: 3000;
+    position: absolute;
+    list-style-type: none;
+    padding: 5px 0;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 400;
+    color: #333;
+    -webkit-box-shadow: 2px 2px 3px 0 rgba(0,0,0,.3);
+    box-shadow: 2px 2px 3px 0 rgba(0,0,0,.3);
+    li {
+        margin: 0;
+        padding: 7px 16px;
+        cursor: pointer;
+        &:hover {
+            background: #eee;
         }
     }
 }

@@ -12,6 +12,10 @@ module.exports = {
     navBar: {
         dashboard:'Dashboard',
         charts:'Charts',
+        waterContentChart:'WaterContent Chart',
+        forestChart:'Forest Chart',
+        christmasChart:'Christmas Chart',
+        vehiclesChart:'Vehicles Chart',
         keyboard:'Keyboard Chart',
         barChart:'Bar Chart',
         lineChart:'Line Chart',
@@ -22,7 +26,6 @@ module.exports = {
         radarChart:'Radar Chart',
         graphChart:'Graph Chart',
         treeChart:'Tree Chart',
-        treeMapChart:'TreeMap Chart',
         sunburstChart:'Sunburst Chart',
         parallelChart:'Parallel Chart',
         funnelChart:'Funnel Chart',

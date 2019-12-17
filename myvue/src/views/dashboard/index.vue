@@ -125,7 +125,7 @@ export default {
                     arr.index = i;
                     dateArr.push(arr)
                 }
-                console.log(dateArr)
+                // console.log(dateArr)
                 for(var i=0;i<dateArr.length;i++) {
                     dateArr[i].index = i;
                     this.animationNum('.active' + dateArr[i].index,dateArr[i].num,dateArr,null,false)
@@ -140,7 +140,7 @@ export default {
         },
         animationNum(target,num,dateArr,index,isInterval) {
 
-            console.log(target,num,dateArr,index,isInterval)
+            // console.log(target,num,dateArr,index,isInterval)
 
             var that = this;
             this.$nextTick(()=>{

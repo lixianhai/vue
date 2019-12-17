@@ -14,6 +14,9 @@ const store = new Vuex.Store({
         },
         navChangeTagsNavActiveClassIndex: (state,activePath) => {
             state.navActivePath = activePath;
+        },
+        removeTagsNavActiveClassIndex: (state) => {
+            state.tagsNavActiveClassIndex-- ;
         }
     },
     actions: {

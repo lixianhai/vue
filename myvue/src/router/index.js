@@ -66,11 +66,6 @@ export default new Router({
               meta: { title:'树图' },
             },
             {
-              path:'/echarts/treeMap',
-              component: () => import('@/views/echarts/components/treeMap'),
-              meta: { title:'矩形树图' },
-            },
-            {
               path:'/echarts/sunburst',
               component: () => import('@/views/echarts/components/sunburst'),
               meta: { title:'旭日图' },
@@ -92,8 +87,30 @@ export default new Router({
             },
             {
               path:'/echarts/pictorialBar',
-              component: () => import('@/views/echarts/components/pictorialBar'),
+              component: () => import('@/views/echarts/components/pictorialBar/index.vue'),
               meta: { title:'象形柱图' },
+              children: [
+                {
+                  path:'/echarts/pictorialBar/waterContent',
+                  component: () => import('@/views/echarts/components/pictorialBar/waterContent'),
+                  meta: { title:'含水率' },
+                },
+                {
+                  path:'/echarts/pictorialBar/forest',
+                  component: () => import('@/views/echarts/components/pictorialBar/forest'),
+                  meta: { title:'森林' },
+                },
+                {
+                  path:'/echarts/pictorialBar/christmas',
+                  component: () => import('@/views/echarts/components/pictorialBar/christmas'),
+                  meta: { title:'圣诞驯鹿的面纱' },
+                },
+                {
+                  path:'/echarts/pictorialBar/vehicles',
+                  component: () => import('@/views/echarts/components/pictorialBar/vehicles'),
+                  meta: { title:'车辆' },
+                }
+              ]
             },
           ]
         },

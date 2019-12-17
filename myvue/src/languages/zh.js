@@ -12,6 +12,10 @@ module.exports = {
     navBar: {
         dashboard:'首页',
         charts:'图表',
+        waterContentChart:'含水率',
+        forestChart:'森林',
+        christmasChart:'圣诞驯鹿的面纱',
+        vehiclesChart:'车辆',
         keyboard:'键盘图表',
         barChart:'柱状图',
         lineChart:'折线图',
@@ -22,7 +26,6 @@ module.exports = {
         radarChart:'雷达图',
         graphChart:'关系图',
         treeChart:'树图',
-        treeMapChart:'矩形树图',
         sunburstChart:'旭日图',
         parallelChart:'平行坐标系',
         funnelChart:'漏斗图',
