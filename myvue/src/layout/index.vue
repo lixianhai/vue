@@ -39,6 +39,7 @@ export default {
 <style scoped lang="less">
 #appWrap {
     .leftNavBarWrap {
+        z-index: 999;
         width: 210px;   
         position: fixed;
         left: 0;

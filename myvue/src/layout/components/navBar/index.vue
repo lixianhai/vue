@@ -32,8 +32,8 @@
                                     <el-menu-item-group>
                                         <el-menu-item index="/echarts/pictorialBar/waterContent">{{$t('navBar.waterContentChart')}}</el-menu-item>
                                         <el-menu-item index="/echarts/pictorialBar/forest">{{$t('navBar.forestChart')}}</el-menu-item>
-                                        <el-menu-item index="/echarts/pictorialBar/christmas">{{$t('navBar.christmasChart')}}</el-menu-item>
                                         <el-menu-item index="/echarts/pictorialBar/vehicles">{{$t('navBar.vehiclesChart')}}</el-menu-item>
+                                        <el-menu-item index="/echarts/pictorialBar/christmas">{{$t('navBar.christmasChart')}}</el-menu-item>
                                     </el-menu-item-group>
                                 </el-submenu>
                                 <el-menu-item index="/echarts/keyboard">{{$t('navBar.keyboard')}}</el-menu-item>
@@ -50,10 +50,35 @@
                                 <el-menu-item index="/echarts/gauge">{{$t('navBar.gaugeChart')}}</el-menu-item>
                             </el-menu-item-group>
                         </el-submenu>
-                        <el-menu-item index="/components">
+                        <el-menu-item index="/icons">
                             <i class="el-icon-menu"></i>
-                            <span slot="title">{{$t('navBar.components')}}</span>
+                            <span slot="title">{{$t('navBar.icons')}}</span>
                         </el-menu-item>
+                        <el-submenu index="/error-page">
+                            <template slot="title">
+                                <i class="el-icon-menu"></i>
+                                <span slot="title">错误页面</span>
+                            </template>
+                            <el-menu-item-group>
+                                <el-menu-item index="/error-page/401">401</el-menu-item>
+                                <el-menu-item index="/error-page/404">404</el-menu-item>
+                            </el-menu-item-group>
+                        </el-submenu>
+                        <el-submenu index="/components">
+                            <template slot="title">
+                                <i class="el-icon-menu"></i>
+                                <span slot="title">{{$t('navBar.components')}}</span>
+                            </template>
+                            <el-menu-item-group>
+                                <el-menu-item index="/components/button">{{$t('navBar.button')}}</el-menu-item>
+                                <el-menu-item index="/components/form">{{$t('navBar.form')}}</el-menu-item>
+                                <el-menu-item index="/components/collapse">{{$t('navBar.collapse')}}</el-menu-item>
+                                <el-menu-item index="/components/carousel">{{$t('navBar.carousel')}}</el-menu-item>
+                                <!-- <el-menu-item index="/components/404">404</el-menu-item> -->
+                                <!-- <el-menu-item index="/components/404">404</el-menu-item> -->
+                                <!-- <el-menu-item index="/components/404">404</el-menu-item> -->
+                            </el-menu-item-group>
+                        </el-submenu>
                     </el-menu>
                 </el-scrollbar>
             </el-col>

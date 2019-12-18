@@ -4,10 +4,10 @@
             <i class="el-icon-search"></i>
         </div>
         <div class="view-right-item" @click="zoom">
-            <svg-icon :icon-class="zoomIcon?'zoom_open':'zoom'" />
+            <svg-icon :icon-class="zoomIcon?'fullscreen':'exit-fullscreen'" />
         </div>
         <div class="view-right-item">
-            <svg-icon icon-class="textSize" />
+            <svg-icon icon-class="size" />
         </div>
         <div class="view-right-item">
             <span class="languages">

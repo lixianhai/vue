@@ -1,6 +1,6 @@
 <template>
-    <div class="content-wrap">
-        组件components
+    <div>
+        <router-view></router-view>
     </div>
 </template>
 

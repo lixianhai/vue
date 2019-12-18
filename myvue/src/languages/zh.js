@@ -12,7 +12,7 @@ module.exports = {
     navBar: {
         dashboard:'首页',
         charts:'图表',
-        waterContentChart:'含水率',
+        waterContentChart:'含量',
         forestChart:'森林',
         christmasChart:'圣诞驯鹿的面纱',
         vehiclesChart:'车辆',
@@ -31,7 +31,12 @@ module.exports = {
         funnelChart:'漏斗图',
         gaugeChart:'仪表盘',
         pictorialBarChart:'象形柱图',
+        icons:'图标',
         components:'组件',
+        button:'按钮',
+        form:'Form',
+        collapse:'折叠面板',
+        carousel:'走马灯'
     },
     headerSelect: {
         profile:'个人中心',

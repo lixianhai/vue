@@ -39,7 +39,7 @@ export default {
                 title:to.meta.title,
                 path:to.path
             }
-            if(JSON.stringify(this.navInfo).indexOf(JSON.stringify(obj)) == -1) {
+            if(JSON.stringify(this.navInfo).indexOf(JSON.stringify(obj)) == -1 && obj.title !== '首页') {
                 this.navInfo.push(obj)
                 window.localStorage.setItem('navInfo',JSON.stringify(this.navInfo))
             }
@@ -108,7 +108,9 @@ export default {
             this.selectedTag = item;
         },
         refreshSelectedTag(view) {
-            this.$router.push(view.path);
+            if(view.path !== this.$route.path) {
+                this.$router.push(view.path);
+            }
             this.visible = false;
         },
         closeSelectedTag(view) {
@@ -119,19 +121,32 @@ export default {
             this.prveTagsClass(view)
         },
         closeOthersTags(view) {
-            var newNavInfo = [view];
+            var newNavInfo = null;
+            
+            if(view.title == '首页') {
+                newNavInfo = [view]
+            }else {
+                newNavInfo = [{path:'/dashboard',title:'首页'},view]
+            }
             this.navInfo = newNavInfo;
             window.localStorage.setItem('navInfo',JSON.stringify(newNavInfo));
-            this.$store.commit('changeTagsNavActiveClassIndex',0)
-            this.$router.push(view.path)
+            this.$store.commit('changeTagsNavActiveClassIndex',1)
+            if(view.path !== this.$route.path) {
+                this.$router.push(view.path)
+            }
             this.visible = false;
         },
         closeAllTags(view) {
-            this.navInfo = [];
-            window.localStorage.setItem('navInfo',JSON.stringify([]));
-            this.$store.commit('changeTagsNavActiveClassIndex',0)
-            this.$router.push('/dashboard')
-            this.visible = false;
+            this.$nextTick(()=>{
+                this.navInfo = [{path:'/dashboard',title:'首页'}];
+                window.localStorage.setItem('navInfo',JSON.stringify(this.navInfo));
+                this.$store.commit('changeTagsNavActiveClassIndex',0)
+                if(this.$route.path !== '/dashboard') {
+                    this.$router.push('/dashboard')
+                }
+                this.visible = false;
+            })
+            
         }
     }
 }

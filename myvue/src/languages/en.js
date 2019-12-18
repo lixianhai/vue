@@ -31,6 +31,7 @@ module.exports = {
         funnelChart:'Funnel Chart',
         gaugeChart:'Gauge Chart',
         pictorialBarChart:'PictorialBar Chart',
+        icons:'Icons',
         components:'Components',
     },
     headerSelect: {

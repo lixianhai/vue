@@ -14,6 +14,7 @@ export default {
 html,#app,body {
   height: 100%;
   margin: 0;
+  overflow-X: hidden;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
   font-family: Helvetica Neue,Helvetica,PingFang SC,Hiragino Sans GB,Microsoft YaHei,Arial,sans-serif;
