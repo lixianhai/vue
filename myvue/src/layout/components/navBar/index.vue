@@ -10,7 +10,7 @@
                         @close="handleClose"
                         @select="changeNavselect"
                         background-color="#304156"
-                        text-color="#efefef"
+                        text-color="#ccdee2"
                         active-text-color="#1890ff"
                         style="height:100vh;"
                         router
