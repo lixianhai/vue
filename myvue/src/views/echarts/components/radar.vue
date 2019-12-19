@@ -6,8 +6,10 @@
 
 <script>
 import echarts from 'echarts'
+import resize from './mixins/resize'
 
 export default {
+  mixins: [resize],
   data() {
     return {
       chart: null
@@ -125,13 +127,6 @@ export default {
             }
         };
         this.chart.setOption({
-            backgroundColor: new echarts.graphic.RadialGradient(0.3, 0.3, 0.8, [{
-                offset: 0,
-                color: '#b1b6be'
-            }, {
-                offset: 1,
-                color: '#344b58'
-            }]),
             backgroundColor: '#344b58',
             title: {
             text: 'AQI - 雷达图',
