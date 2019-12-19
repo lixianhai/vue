@@ -115,6 +115,55 @@ export default new Router({
           ]
         },
         {
+          path: '/table',
+          component: () => import('@/views/table'),
+          meta: { title:'表格' },
+          children: [
+            {
+              path: '/table/dynamic-table',
+              component: () => import('@/views/table/components/dynamic-table'),
+              meta: { title:'动态 Table' },
+            },
+            {
+              path: '/table/inline-edit-table',
+              component: () => import('@/views/table/components/inline-edit-table'),
+              meta: { title:'Table 内编辑' },
+            },
+            {
+              path: '/table/drag-table',
+              component: () => import('@/views/table/components/drag-table'),
+              meta: { title:'拖拽 Table' },
+            },
+          ]
+        },
+        {
+          path: '/excel',
+          component: () => import('@/views/excel'),
+          meta: { title:'Excel' },
+          children: [
+            {
+              path: '/excel/export-excel',
+              component: () => import('@/views/excel/components/export-excel'),
+              meta: { title:'导出 Excel' },
+            },
+            {
+              path: '/excel/merge-header',
+              component: () => import('@/views/excel/components/merge-header'),
+              meta: { title:'Excel 多级表头' },
+            },
+            {
+              path: '/excel/select-excel',
+              component: () => import('@/views/excel/components/select-excel'),
+              meta: { title:'Excel 已选择项' },
+            }
+          ]
+        },
+        {
+          path: '/zip',
+          component: () => import('@/views/zip'),
+          meta: { title:'Export Zip' },
+        },
+        {
           path: '/icons',
           component: () => import('@/views/icons'),
           meta: { title:'首页' },

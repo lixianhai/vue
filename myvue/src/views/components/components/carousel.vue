@@ -38,8 +38,8 @@
             </el-carousel>
         </div>
         <div class="box-shadow content-wrap">
-            <h2>指示器</h2>
-            <el-carousel indicator-position="outside" height="650px">
+            <h2>轮播方向</h2>
+            <el-carousel height="650px" direction="vertical">
                 <el-carousel-item>
                     <img src="@/assets/鬼刀1.jpg">
                 </el-carousel-item>
@@ -70,7 +70,9 @@
 .el-carousel__item:nth-child(2n) {
     background-color: #99a9bf;
 }
-
+// .el-carousel__indicators {
+//     position: absolute;
+// }
 .el-carousel__item:nth-child(2n+1) {
     background-color: #d3dce6;
 }

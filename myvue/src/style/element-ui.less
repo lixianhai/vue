@@ -10,12 +10,10 @@ input {
 .fade-transform-enter-active {
   transition: all .5s;
 }
-
 .fade-transform-enter {
   opacity: 0;
   transform: translateX(-30px);
 }
-
 .fade-transform-leave-to {
   opacity: 0;
   transform: translateX(30px);
@@ -25,21 +23,33 @@ input {
 .breadcrumb-leave-active {
   transition: all .5s;
 }
-
 .breadcrumb-enter,
 .breadcrumb-leave-active {
   opacity: 0;
   transform: translateX(20px);
 }
-
 .breadcrumb-move {
   transition: all .5s;
 }
-
 .breadcrumb-leave-active {
   position: absolute;
 }
 
+.echarts-enter-active,
+.echarts-leave-active {
+  transition: all 1s;
+}
+.echarts-enter,
+.echarts-leave-active {
+  opacity: 0;
+  transform: translateX(10px);
+}
+.echarts-move {
+  transition: all 1s;
+}
+.echarts-leave-active {
+  position: absolute;
+}
 
 .box-shadow {
     -webkit-box-shadow: 0 2px 12px 0 rgba(0,0,0,.1);

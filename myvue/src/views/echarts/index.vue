@@ -6,14 +6,11 @@
 
 <script>
 export default {
-    data() {
-        return {
-
-        }
+  name: 'Echarts',
+  computed: {
+    key() {
+      return this.$route.path
     }
+  }
 }
 </script>
-
-<style scoped>
-
-</style>

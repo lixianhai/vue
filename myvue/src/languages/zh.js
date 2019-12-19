@@ -36,7 +36,16 @@ module.exports = {
         button:'按钮',
         form:'Form',
         collapse:'折叠面板',
-        carousel:'走马灯'
+        carousel:'走马灯',
+        table: 'Table',
+        dynamicTable: '动态 Table',
+        dragTable: '拖拽 Table',
+        complexTable: 'Table 内编辑',
+        errorPages: '错误页面',
+        excel: 'Excel',
+        importExcel: '导出 Excel',
+        mergeHeader: 'Excel 多级表头',
+        importSelected: 'Excel 已选择项',
     },
     headerSelect: {
         profile:'个人中心',
