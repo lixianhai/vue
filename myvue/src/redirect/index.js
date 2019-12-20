@@ -18,4 +18,5 @@ router.beforeEach((to, form, next)=>{
             next('/login');
         }
     }
+    document.title = to.meta.title + ' - Vue Element Admin';
 })

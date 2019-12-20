@@ -119,7 +119,7 @@
                                 </el-menu-item>
                             </el-menu-item-group>
                         </el-submenu>
-                        <el-menu-item index="/icons">
+                        <el-menu-item index="/icons/index">
                             <svg-icon icon-class="icon" />
                             <span slot="title">{{$t('navBar.icons')}}</span>
                         </el-menu-item>
@@ -142,7 +142,7 @@
                                     {{$t('navBar.collapse')}}
                                 </el-menu-item>
                                 <el-menu-item index="/components/carousel">
-                                    <svg-icon icon-class="riding_svg" />
+                                    <svg-icon style="font-size:1.3em;" icon-class="riding_svg" />
                                     {{$t('navBar.carousel')}}
                                 </el-menu-item>
                             </el-menu-item-group>
@@ -189,7 +189,7 @@
                                 <span>Zip</span>
                             </template>
                             <el-menu-item-group>
-                                <el-menu-item index="/zip">
+                                <el-menu-item index="/zip/index">
                                     <svg-icon icon-class="export_zip" />
                                     Export Zip
                                 </el-menu-item>
@@ -205,13 +205,14 @@
 export default {
     data() {
         return {
-            navInfoArr: []
+            navInfoArr: [],
+            top:0
         }
     },
     computed: {
         
     },
-    created() {
+    mounted() {
         
     },
     methods: {
@@ -230,6 +231,10 @@ export default {
 <style lang="less" scoped>
 .navBar {
     width: 100%;
+}
+.el-scrollbar__view:hover .hover-bar:before {
+    top: 0;
+    height: 100%;
 }
 .is-active {
     color: #64d9d6!important;

@@ -21,203 +21,344 @@ export default new Router({
           meta: { title:'首页' },
         },
         {
-          path: '/echarts',
-          component: () => import('@/views/echarts'),
-          meta: { title:'图表' },
-          children: [
-            {
-              path:'/echarts/keyboard',
-              component: () => import('@/views/echarts/components/keyboard'),
-              meta: { title:'键盘图表' },
-            },
-            {
-              path:'/echarts/bar',
-              component: () => import('@/views/echarts/components/bar'),
-              meta: { title:'柱状图' },
-            },
-            {
-              path:'/echarts/line',
-              component: () => import('@/views/echarts/components/line'),
-              meta: { title:'折线图' },
-            },
-            {
-              path:'/echarts/blend',
-              component: () => import('@/views/echarts/components/blend'),
-              meta: { title:'混合图表' },
-            },
-            {
-              path:'/echarts/pie',
-              component: () => import('@/views/echarts/components/pie'),
-              meta: { title:'饼图' },
-            },
-            {
-              path:'/echarts/scatter',
-              component: () => import('@/views/echarts/components/scatter'),
-              meta: { title:'散点图' },
-            },
-            {
-              path:'/echarts/radar',
-              component: () => import('@/views/echarts/components/radar'),
-              meta: { title:'雷达图' },
-            },
-            {
-              path:'/echarts/tree',
-              component: () => import('@/views/echarts/components/tree'),
-              meta: { title:'树图' },
-            },
-            {
-              path:'/echarts/sunburst',
-              component: () => import('@/views/echarts/components/sunburst'),
-              meta: { title:'旭日图' },
-            },
-            {
-              path:'/echarts/parallel',
-              component: () => import('@/views/echarts/components/parallel'),
-              meta: { title:'平行坐标系' },
-            },
-            {
-              path:'/echarts/funnel',
-              component: () => import('@/views/echarts/components/funnel'),
-              meta: { title:'漏斗图' },
-            },
-            {
-              path:'/echarts/gauge',
-              component: () => import('@/views/echarts/components/gauge'),
-              meta: { title:'仪表盘' },
-            },
-            {
-              path:'/echarts/pictorialBar',
-              component: () => import('@/views/echarts/components/pictorialBar/index.vue'),
-              meta: { title:'象形柱图' },
-              children: [
-                {
-                  path:'/echarts/pictorialBar/waterContent',
-                  component: () => import('@/views/echarts/components/pictorialBar/waterContent'),
-                  meta: { title:'含量' },
-                },
-                {
-                  path:'/echarts/pictorialBar/forest',
-                  component: () => import('@/views/echarts/components/pictorialBar/forest'),
-                  meta: { title:'森林' },
-                },
-                {
-                  path:'/echarts/pictorialBar/christmas',
-                  component: () => import('@/views/echarts/components/pictorialBar/christmas'),
-                  meta: { title:'圣诞驯鹿的面纱' },
-                },
-                {
-                  path:'/echarts/pictorialBar/vehicles',
-                  component: () => import('@/views/echarts/components/pictorialBar/vehicles'),
-                  meta: { title:'车辆' },
-                }
-              ]
-            },
-          ]
-        },
+          path: '/',
+          component: Layout,
+          redirect: '/dashboard',
+        }
+      ]
+    },
+
+    // Echarts
+
+    {
+      path:'/echarts',
+      component: Layout,
+      meta: { title:'图表' },
+      redirect: '/echarts/keyboard', 
+      children: [
         {
-          path: '/table',
-          component: () => import('@/views/table'),
-          meta: { title:'表格' },
+          path:'pictorialBar',
+          component: () => import('@/views/echarts/pictorialBar/index'),
+          meta: {title: '象形柱图'},
           children: [
             {
-              path: '/table/dynamic-table',
-              component: () => import('@/views/table/components/dynamic-table'),
-              meta: { title:'动态 Table' },
+              path:'waterContent',
+              component: () => import('@/views/echarts/pictorialBar/waterContent'),
+              meta: { title:'含量' },
             },
             {
-              path: '/table/inline-edit-table',
-              component: () => import('@/views/table/components/inline-edit-table'),
-              meta: { title:'Table 内编辑' },
+              path:'forest',
+              component: () => import('@/views/echarts/pictorialBar/forest'),
+              meta: { title:'森林' },
             },
             {
-              path: '/table/drag-table',
-              component: () => import('@/views/table/components/drag-table'),
-              meta: { title:'拖拽 Table' },
-            },
-          ]
-        },
-        {
-          path: '/excel',
-          component: () => import('@/views/excel'),
-          meta: { title:'Excel' },
-          children: [
-            {
-              path: '/excel/export-excel',
-              component: () => import('@/views/excel/components/export-excel'),
-              meta: { title:'导出 Excel' },
+              path:'christmas',
+              component: () => import('@/views/echarts/pictorialBar/christmas'),
+              meta: { title:'圣诞驯鹿的面纱' },
             },
             {
-              path: '/excel/merge-header',
-              component: () => import('@/views/excel/components/merge-header'),
-              meta: { title:'Excel 多级表头' },
-            },
-            {
-              path: '/excel/select-excel',
-              component: () => import('@/views/excel/components/select-excel'),
-              meta: { title:'Excel 已选择项' },
+              path:'vehicles',
+              component: () => import('@/views/echarts/pictorialBar/vehicles'),
+              meta: { title:'车辆' },
             }
           ]
         },
         {
-          path: '/zip',
+          path:'keyboard',
+          component: () => import('@/views/echarts/keyboard'),
+          meta: { title:'键盘图表' },
+        },
+        {
+          path:'bar',
+          component: () => import('@/views/echarts/bar'),
+          meta: { title:'柱状图' },
+        },
+        {
+          path:'line',
+          component: () => import('@/views/echarts/line'),
+          meta: { title:'折线图' },
+        },
+        {
+          path:'blend',
+          component: () => import('@/views/echarts/blend'),
+          meta: { title:'混合图表' },
+        },
+        {
+          path:'pie',
+          component: () => import('@/views/echarts/pie'),
+          meta: { title:'饼图' },
+        },
+        {
+          path:'scatter',
+          component: () => import('@/views/echarts/scatter'),
+          meta: { title:'散点图' },
+        },
+        {
+          path:'radar',
+          component: () => import('@/views/echarts/radar'),
+          meta: { title:'雷达图' },
+        },
+        {
+          path:'tree',
+          component: () => import('@/views/echarts/tree'),
+          meta: { title:'树图' },
+        },
+        {
+          path:'sunburst',
+          component: () => import('@/views/echarts/sunburst'),
+          meta: { title:'旭日图' },
+        },
+        {
+          path:'parallel',
+          component: () => import('@/views/echarts/parallel'),
+          meta: { title:'平行坐标系' },
+        },
+        {
+          path:'funnel',
+          component: () => import('@/views/echarts/funnel'),
+          meta: { title:'漏斗图' },
+        },
+        {
+          path:'gauge',
+          component: () => import('@/views/echarts/gauge'),
+          meta: { title:'仪表盘' },
+        },
+      ]
+    },
+
+    // // Table
+
+    {
+      path: '/table',
+      component: Layout,
+      meta: { title:'Table' },
+      redirect: '/table/dynamic-table',
+      children: [
+        {
+          path: 'dynamic-table',
+          component: () => import('@/views/table/dynamic-table'),
+          meta: { title:'动态 Table' }
+        },
+        {
+          path: 'inline-edit-table',
+          component: () => import('@/views/table/inline-edit-table'),
+          meta: { title:'Table 内编辑' }
+        },
+        {
+          path: 'drag-table',
+          component: () => import('@/views/table/drag-table'),
+          meta: { title:'拖拽 Table' }
+        },
+      ]
+    },
+
+    // // Excel
+
+    {
+      path: '/excel',
+      component: Layout,
+      meta: { title:'导出 Excel' },
+      redirect: '/excel/export-excel',
+      children: [
+        {
+          path: '/excel/export-excel',
+          component: () => import('@/views/excel/export-excel'),
+          meta: { title:'导出 Excel' },
+        },
+        {
+          path: '/excel/merge-header',
+          component: () => import('@/views/excel/merge-header'),
+          meta: { title:'Excel 多级表头' },
+        },
+        {
+          path: '/excel/select-excel',
+          component: () => import('@/views/excel/select-excel'),
+          meta: { title:'Excel 已选择项' },
+        }
+      ]
+    },
+    
+    // // Components
+    
+    {
+      path: '/components',
+      component: Layout,
+      meta: { title:'组件' },
+      redirect: '/components/button',
+      children: [
+        {
+          path: 'button',
+          component: () => import('@/views/components/button'),
+          meta: { title:'按钮' },
+        },
+        {
+          path: 'form',
+          component: () => import('@/views/components/form'),
+          meta: { title:'表单' },
+        },
+        {
+          path: 'collapse',
+          component: () => import('@/views/components/collapse'),
+          meta: { title:'折叠面板' },
+        },
+        {
+          path: 'carousel',
+          component: () => import('@/views/components/carousel'),
+          meta: { title:'走马灯' },
+        },
+      ]
+    },
+    
+    // // Zip
+
+    {
+      path: '/zip',
+      component: Layout,
+      children: [
+        {
+          path: 'index',
           component: () => import('@/views/zip'),
-          meta: { title:'Export Zip' },
-        },
+          meta: { title:'Export Zip' }
+        }
+      ]
+    },
+
+    // Icons
+
+    {
+      path: '/icons',
+      component: Layout,
+      meta: { title:'Zip' },
+      redirect: '/icons',
+      children: [
         {
-          path: '/icons',
+          path: 'index',
           component: () => import('@/views/icons'),
-          meta: { title:'首页' },
+          meta: { title:'Icons' }
+        }
+      ]
+    },
+
+    // Error page
+
+    {
+      path: '/error-page',
+      component: Layout,
+      meta: { title:'Error Page' },
+      redirect: '/error-page/401',
+      children: [
+        {
+          path: '401',
+          component: () => import('@/views/error-page/401'),
+          meta: { title:'401' }
         },
         {
-          path: '/error-page',
-          component: () => import('@/views/error-page'),
-          meta: { title:'错误页面' },
-          children: [
-            {
-              path: '/error-page/401',
-              component: () => import('@/views/error-page/components/401'),
-              meta: { title:'401' }
-            },
-            {
-              path: '/error-page/404',
-              component: () => import('@/views/error-page/components/404'),
-              meta: { title:'404' }
-            }
-          ]
-        },
+          path: '404',
+          component: () => import('@/views/error-page/404'),
+          meta: { title:'404' }
+        }
+      ]
+    },
+
+    // Profile
+
+    {
+      path: '/profile',
+      component: Layout,
+      meta: { title:'个人中心' },
+      redirect: '/profile',
+      children: [
         {
           path: '/profile',
           component: () => import('@/views/profile'),
           meta: { title:'个人中心' },
         },
-        {
-          path: '/components',
-          component: () => import('@/views/components'),
-          meta: { title:'组件' },
-          children: [
-            {
-              path: '/components/button',
-              component: () => import('@/views/components/components/button'),
-              meta: { title:'按钮' },
-            },
-            {
-              path: '/components/form',
-              component: () => import('@/views/components/components/form'),
-              meta: { title:'表单' },
-            },
-            {
-              path: '/components/collapse',
-              component: () => import('@/views/components/components/collapse'),
-              meta: { title:'折叠面板' },
-            },
-            {
-              path: '/components/carousel',
-              component: () => import('@/views/components/components/carousel'),
-              meta: { title:'走马灯' },
-            },
-          ]
-        },
       ]
     }
   ]
 })
+
+
+
+ // Echarts page2
+
+        // {
+        //   path:'/echarts/pictorialBar/waterContent',
+        //   component: () => import('@/views/echarts/pictorialBar/waterContent'),
+        //   meta: { title:'含量' },
+        // },
+        // {
+        //   path:'/echarts/pictorialBar/forest',
+        //   component: () => import('@/views/echarts/pictorialBar/forest'),
+        //   meta: { title:'森林' },
+        // },
+        // {
+        //   path:'/echarts/pictorialBar/christmas',
+        //   component: () => import('@/views/echarts/pictorialBar/christmas'),
+        //   meta: { title:'圣诞驯鹿的面纱' },
+        // },
+        // {
+        //   path:'/echarts/pictorialBar/vehicles',
+        //   component: () => import('@/views/echarts/pictorialBar/vehicles'),
+        //   meta: { title:'车辆' },
+        // },
+
+        // // Zip
+
+        // {
+        //   path: '/zip',
+        //   component: () => import('@/views/zip'),
+        //   meta: { title:'Export Zip' },
+        // },
+
+        // // Icons
+
+        // {
+        //   path: '/icons',
+        //   component: () => import('@/views/icons'),
+        //   meta: { title:'首页' },
+        // },
+
+        // // Error page
+
+        // {
+        //   path: '/error-page/401',
+        //   component: () => import('@/views/error-page/401'),
+        //   meta: { title:'401' }
+        // },
+        // {
+        //   path: '/error-page/404',
+        //   component: () => import('@/views/error-page/404'),
+        //   meta: { title:'404' }
+        // },
+
+        // // Profile
+
+        // {
+        //   path: '/profile',
+        //   component: () => import('@/views/profile'),
+        //   meta: { title:'个人中心' },
+        // },
+
+        // // Components
+
+        // {
+        //   path: '/components/button',
+        //   component: () => import('@/views/components/button'),
+        //   meta: { title:'按钮' },
+        // },
+        // {
+        //   path: '/components/form',
+        //   component: () => import('@/views/components/form'),
+        //   meta: { title:'表单' },
+        // },
+        // {
+        //   path: '/components/collapse',
+        //   component: () => import('@/views/components/collapse'),
+        //   meta: { title:'折叠面板' },
+        // },
+        // {
+        //   path: '/components/carousel',
+        //   component: () => import('@/views/components/carousel'),
+        //   meta: { title:'走马灯' },
+        // },

@@ -178,6 +178,23 @@ export default {
         font-size: 12px;
         margin-left: 5px;
         margin-top: 4px;
+        &:after {
+            content: "";
+            display: inline-block;
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 3px;
+            background: #42b983;
+            transition: all .3s;
+        }
+        &:hover {
+            &:after {
+                left: 0%;
+                width: 100%;
+            }
+        }
         .el-icon-close {
             width: 16px;
             height: 16px;

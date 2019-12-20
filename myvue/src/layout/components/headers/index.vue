@@ -1,5 +1,5 @@
 <template>
-    <div class="header-view-right" ref="asas">
+    <div class="header-view-right">
         <div class="view-right-item">
             <i class="el-icon-search"></i>
         </div>

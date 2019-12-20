@@ -1,7 +1,7 @@
 <template>
     <el-breadcrumb separator="/">
         <transition-group name="breadcrumb">
-            <el-breadcrumb-item v-for="(item,index) in navList" :key="item.path">
+            <el-breadcrumb-item v-for="(item,index) in navList" :to="{path:item.path}" @click.native="aaa(item)" :key="item.path">
                 <span class="no-redirect" v-if="index===navList.length-1">{{item.meta.title}}</span>
                 <a v-else>{{item.meta.title}}</a>
             </el-breadcrumb-item>
@@ -41,6 +41,9 @@ export default {
             }
             return name.trim().toLocaleLowerCase() === 'Dashboard'.toLocaleLowerCase()
         },
+        aaa(item) {
+            console.log(item)
+        }
     }
 }
 </script>
