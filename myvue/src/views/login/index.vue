@@ -136,7 +136,6 @@ export default {
                         this.$router.push('/dashboard');
                         
                         localStorage.removeItem("navInfo");
-                        console.log(1231212)
                     })
                 }
             })

@@ -1,8 +1,10 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import router from '../router'
 import { login,getInfo } from '@/api'
 import { getToken, setToken, removeToken } from '@/utils/auth'
 import { asyncRoutes,constantRoutes } from '@/router'
+import { resetRouter } from '@/router'
  
 Vue.use(Vuex)
 
@@ -38,10 +40,8 @@ const store = new Vuex.Store({
             state.user.name = name
         },
         SET_ROUTES: (state,routes) => {
-            
             state.user.addRoutes = routes
             state.user.routes = constantRoutes.concat(routes)
-            console.log(state.user.routes)
         }
     },
     actions: {
@@ -86,6 +86,32 @@ const store = new Vuex.Store({
                 store.commit('SET_TOKEN','')
                 store.commit('SET_ROUTES', [])
                 removeToken()
+                resolve()
+            })
+        },
+        logout(state) {
+            return new Promise((resolve,reject) => {
+                store.commit('SET_TOKEN', '')
+                store.commit('SET_ROLES', [])
+                removeToken()
+                resetRouter()
+                resolve()
+            })
+        },
+        changeRoles(state,role) {
+            console.log(role)
+            return new Promise(async(resolve,reject) => {
+                const token = role + '-token'
+                store.commit('SET_TOKEN', token)
+                setToken(token)
+
+                const { roles } = await store.dispatch('getUserInfo')
+                resetRouter()
+
+                const accessRoutes = await store.dispatch('generateRoutes', roles, { root: true })
+
+                router.addRoutes(accessRoutes)
+
                 resolve()
             })
         }

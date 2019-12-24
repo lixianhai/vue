@@ -20,7 +20,103 @@ export const constantRoutes = [
         path: '/dashboard',
         component: () => import('@/views/dashboard'),
         name:  'Dashboard',
-        meta: { title: '首页',icon: 'dashboard' },
+        meta: { title: '首页',icon: 'dashboard',affix: true },
+      }
+    ]
+  },
+
+  {
+    path:  '/echarts',
+    component: Layout,
+    meta: { title: '图表',icon: 'chart',roles:['admin'] },
+    redirect: '/echarts/keyboard',
+    children: [
+      {
+          path:  'pictorialBar',
+          component: () => import('@/views/echarts/pictorialBar/index'),
+          meta: { title: '象形柱图',icon: 'elephant',roles:['admin'] },
+          children: [
+          {
+              path:  'waterContent',
+              component: () => import('@/views/echarts/pictorialBar/waterContent'),
+              meta: { title: '含量',icon: 'content',roles:['admin'] },
+          },
+          {
+              path:  'forest',
+              component: () => import('@/views/echarts/pictorialBar/forest'),
+              meta: { title: '森林',icon: 'forest',roles:['admin'] },
+          },
+          {
+              path:  'christmas',
+              component: () => import('@/views/echarts/pictorialBar/christmas'),
+              meta: { title: '圣诞驯鹿的面纱',icon: 'reindeer',roles:['admin'] },
+          },
+          {
+              path:  'vehicles',
+              component: () => import('@/views/echarts/pictorialBar/vehicles'),
+              meta: { title: '车辆',icon: 'car',roles:['admin'] },
+          }
+      ]
+      },
+      {
+          path:  'keyboard',
+          component: () => import('@/views/echarts/keyboard'),
+          meta: { title: '键盘图表',icon: 'bridge',roles:['admin'] },
+      },
+      {
+          path:  'bar',
+          component: () => import('@/views/echarts/bar'),
+          meta: { title: '柱状图',icon: 'bar',roles:['admin'] },
+      },
+      {
+          path:  'line',
+          component: () => import('@/views/echarts/line'),
+          meta: { title: '折线图',icon: 'line',roles:['admin'] },
+      },
+      {
+          path:  'blend',
+          component: () => import('@/views/echarts/blend'),
+          meta: { title: '混合图表',icon: 'drag',roles:['admin'] },
+      },
+      {
+          path:  'pie',
+          component: () => import('@/views/echarts/pie'),
+          meta: { title: '饼图',icon: 'pie',roles:['admin'] },
+      },
+      {
+          path:  'scatter',
+          component: () => import('@/views/echarts/scatter'),
+          meta: { title: '散点图',icon: 'scatter',roles:['admin'] },
+      },
+      {
+          path:  'radar',
+          component: () => import('@/views/echarts/radar'),
+          meta: { title: '雷达图',icon: 'radar',roles:['admin'] },
+      },
+      {
+          path:  'tree',
+          component: () => import('@/views/echarts/tree'),
+          meta: { title: '树图',icon: 'tree_svg',roles:['admin'] },
+      },
+      {
+          path:  'sunburst',
+          component: () => import('@/views/echarts/sunburst'),
+          meta: { title: '旭日图',icon: 'sun',roles:['admin'] },
+      },
+      {
+          path:  'parallel',
+          component: () => import('@/views/echarts/parallel'),
+          meta: { title: '平行坐标系',icon: 'coordinate',roles:['admin'] },
+      },
+      {
+          path:  'funnel',
+          component: () => import('@/views/echarts/funnel'),
+          meta: { title: '漏斗图',icon: 'funnel',roles:['admin'] },
+      },
+      {
+          path:  'gauge',
+          component: () => import('@/views/echarts/gauge'),
+          meta: { title: '仪表盘',icon: 'dashboard',roles:['admin'] },
       }
     ]
   },
@@ -113,12 +209,14 @@ export const constantRoutes = [
   {
     path: '/zip',
     component: Layout,
+    meta: { title: 'Zip',icon: 'export_zip' },
+    alwaysShow: true,
     redirect: '/zip',
     children: [
       {
         path: 'index',
         component: () => import('@/views/zip'),
-        meta: { title: 'Zip',icon: 'export_zip' }
+        meta: { title: 'Export Zip',icon: 'export_zip' }
       }
     ]
   },
@@ -179,100 +277,30 @@ export const constantRoutes = [
 
 export const asyncRoutes = [
   {
-      path:  '/echarts',
-      component: Layout,
-      meta: { title: '图表',icon: 'chart',roles:['admin'] },
-      redirect: '/echarts/keyboard',
-      children: [
-          {
-              path:  'pictorialBar',
-              component: () => import('@/views/echarts/pictorialBar/index'),
-              meta: { title: '象形柱图',icon: 'elephant',roles:['admin'] },
-              children: [
-              {
-                  path:  'waterContent',
-                  component: () => import('@/views/echarts/pictorialBar/waterContent'),
-                  meta: { title: '含量',icon: 'content',roles:['admin'] },
-              },
-              {
-                  path:  'forest',
-                  component: () => import('@/views/echarts/pictorialBar/forest'),
-                  meta: { title: '森林',icon: 'forest',roles:['admin'] },
-              },
-              {
-                  path:  'christmas',
-                  component: () => import('@/views/echarts/pictorialBar/christmas'),
-                  meta: { title: '圣诞驯鹿的面纱',icon: 'reindeer',roles:['admin'] },
-              },
-              {
-                  path:  'vehicles',
-                  component: () => import('@/views/echarts/pictorialBar/vehicles'),
-                  meta: { title: '车辆',icon: 'car',roles:['admin'] },
-              }
-          ]
-          },
-          {
-              path:  'keyboard',
-              component: () => import('@/views/echarts/keyboard'),
-              meta: { title: '键盘图表',icon: 'bridge',roles:['admin'] },
-          },
-          {
-              path:  'bar',
-              component: () => import('@/views/echarts/bar'),
-              meta: { title: '柱状图',icon: 'bar',roles:['admin'] },
-          },
-          {
-              path:  'line',
-              component: () => import('@/views/echarts/line'),
-              meta: { title: '折线图',icon: 'line',roles:['admin'] },
-          },
-          {
-              path:  'blend',
-              component: () => import('@/views/echarts/blend'),
-              meta: { title: '混合图表',icon: 'drag',roles:['admin'] },
-          },
-          {
-              path:  'pie',
-              component: () => import('@/views/echarts/pie'),
-              meta: { title: '饼图',icon: 'pie',roles:['admin'] },
-          },
-          {
-              path:  'scatter',
-              component: () => import('@/views/echarts/scatter'),
-              meta: { title: '散点图',icon: 'scatter',roles:['admin'] },
-          },
-          {
-              path:  'radar',
-              component: () => import('@/views/echarts/radar'),
-              meta: { title: '雷达图',icon: 'radar',roles:['admin'] },
-          },
-          {
-              path:  'tree',
-              component: () => import('@/views/echarts/tree'),
-              meta: { title: '树图',icon: 'tree_svg',roles:['admin'] },
-          },
-          {
-              path:  'sunburst',
-              component: () => import('@/views/echarts/sunburst'),
-              meta: { title: '旭日图',icon: 'sun',roles:['admin'] },
-          },
-          {
-              path:  'parallel',
-              component: () => import('@/views/echarts/parallel'),
-              meta: { title: '平行坐标系',icon: 'coordinate',roles:['admin'] },
-          },
-          {
-              path:  'funnel',
-              component: () => import('@/views/echarts/funnel'),
-              meta: { title: '漏斗图',icon: 'funnel',roles:['admin'] },
-          },
-          {
-              path:  'gauge',
-              component: () => import('@/views/echarts/gauge'),
-              meta: { title: '仪表盘',icon: 'dashboard',roles:['admin'] },
-          }
-      ]
-  },
+    path: '/permission',
+    component: Layout,
+    meta: { title: '权限测试页',icon: 'permission' },
+    redirect: '/permission/page',
+    alwaysShow: true,
+    roles: ['admin', 'editor'],
+    children: [
+      {
+        path: 'page',
+        component: () => import('@/views/permission/page-permission'),
+        meta: { title: '页面权限',icon: 'page-permission',roles: ['admin'] }
+      },
+      {
+        path: 'directive',
+        component: () => import('@/views/permission/directive-permission'),
+        meta: { title: '指令权限',icon: 'directive-permission' }
+      },
+      {
+        path: 'role',
+        component: () => import('@/views/permission/role-permission'),
+        meta: { title: '角色权限',icon: 'role-permission',roles: ['admin'] }
+      },
+    ]
+  }
 ]
 
 

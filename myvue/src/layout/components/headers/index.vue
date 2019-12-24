@@ -32,7 +32,7 @@
                         <el-dropdown-item command="/dashboard">{{$t('headerSelect.dashboard')}}</el-dropdown-item>
                         <el-dropdown-item command="项目地址">{{$t('headerSelect.github')}}</el-dropdown-item>
                         <el-dropdown-item command="Docs">Docs</el-dropdown-item>
-                        <el-dropdown-item command="/login" divided>{{$t('headerSelect.logout')}}</el-dropdown-item>
+                        <el-dropdown-item @click.native="logout" command="/login" divided>{{$t('headerSelect.logout')}}</el-dropdown-item>
                     </el-dropdown-menu>
                 </el-dropdown>
             </div>
@@ -55,9 +55,8 @@ export default {
                 window.open('https://panjiachen.github.io/vue-element-admin-site/#/')
             }else if(command == '项目地址') {
                 window.open('https://github.com/lixianhai/vue/tree/master/myvue')
-            }else if(command =='/login') {
-                Cookies.remove('user_token')
-                this.$router.push(command)
+            }else if(command == '/login'){
+                
             }else {
                 this.$router.push(command)
             }
@@ -94,6 +93,10 @@ export default {
             }
             this.zoomIcon = !this.zoomIcon;
         },
+        async logout() {
+            await this.$store.dispatch('logout')
+            this.$router.push('/login')
+        }
     }
 }
 </script>
