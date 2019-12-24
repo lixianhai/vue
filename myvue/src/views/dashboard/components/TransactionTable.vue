@@ -38,7 +38,7 @@ export default {
   },
   data() {
     return {
-      userName:JSON.parse(Cookies.get('user_token')).name,
+      userName:'admin',
       list: [
         {
           order_no: '《代码大全》 史蒂夫·迈克康奈尔',

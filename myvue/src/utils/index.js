@@ -34,7 +34,7 @@ export function debounce(func, wait, immediate) {
   }
 
 
-  export function parseTime(time, cFormat) {
+export function parseTime(time, cFormat) {
     if (arguments.length === 0) {
       return null
     }
@@ -70,4 +70,9 @@ export function debounce(func, wait, immediate) {
       return value || 0
     })
     return time_str
-  }
+}
+
+
+export function isExternal(path) {
+  return /^(https?:|mailto:|tel:)/.test(path)
+}

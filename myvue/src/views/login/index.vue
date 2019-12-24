@@ -129,13 +129,15 @@ export default {
             this.$refs[ruleForm].validate(valid => {
                 if(valid) {
                     var obj = {
-                        name:this.ruleForm.name,
-                        password:this.ruleForm.password
+                        name:this.ruleForm.name + '-token',
+                        password:this.ruleForm.password + '-token'
                     }
-                    Cookies.set('user_token',obj);
-                    this.$router.push('/dashboard');
-                    this.$refs[ruleForm].resetFields();
-                    localStorage.removeItem("navInfo");
+                    this.$store.dispatch('login',obj).then(() => {
+                        this.$router.push('/dashboard');
+                        
+                        localStorage.removeItem("navInfo");
+                        console.log(1231212)
+                    })
                 }
             })
         },

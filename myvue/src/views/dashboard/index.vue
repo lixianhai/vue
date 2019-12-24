@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div v-if="userName=='editor'" class="dashboard-editor-container">
+    <div v-if="userName=='editor-token'" class="dashboard-editor-container">
       <div class=" clearfix">
         <pan-thumb :image="avatar" style="float: left">
           Your roles:
@@ -80,6 +80,7 @@ import TodoList from './components/TodoList'
 import BoxCard from './components/BoxCard'
 import Cookies from 'js-cookie'
 import PanThumb from '@/components/PanThumb'
+import { getToken, setToken, removeToken } from '@/utils/auth'
 
 const lineChartData = {
   newVisitis: {
@@ -117,7 +118,7 @@ export default {
   data() {
     return {
       lineChartData: lineChartData.newVisitis,
-      userName: JSON.parse(Cookies.get('user_token')).name,
+      userName: getToken(),
       emptyGif: 'https://wpimg.wallstcn.com/0e03b7da-db9e-4819-ba10-9016ddfdaed3',
       avatar: 'https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif',
       years: null,

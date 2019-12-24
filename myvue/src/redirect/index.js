@@ -1,22 +1,38 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+import store from '../store'
 import router from '../router'
-import Cookies from 'js-cookie'
+import { getToken } from '@/utils/auth'
 
-router.beforeEach((to, form, next)=>{
-    var cookies = Cookies.get('user_token');
-    var userInfo = null;
-    if(cookies) {
-        userInfo = JSON.parse(Cookies.get('user_token'))
-    }
-    if(userInfo) {
-        next()
-    }else {
-        if(to.path == '/login') {
+router.beforeEach(async(to, form, next)=>{
+
+    const hasToken = getToken()
+
+    if(hasToken) {
+        // console.log('token存在')
+        if(to.path === '/login') {
+            // console.log('登录页面')
             next()
         }else {
-            next('/login');
+            const hasRoles = store.state.user.roles && store.state.user.roles.length > 0
+            if (hasRoles) {
+                // console.log('存在大于0')
+                next()
+            }else {
+                try {
+                    const { roles } = await store.dispatch('getUserInfo')
+                    const accessRoutes = await store.dispatch('generateRoutes', roles)
+                    router.addRoutes(accessRoutes)
+                    // console.log(roles,accessRoutes,'roles')
+                } catch(error) {
+                    await store.dispatch('resetToken')
+                    next()
+                }
+            }
+            next()
         }
+    }else {
+        // console.log('token不存在')
+        next();
     }
-    document.title = to.meta.title + ' - Vue Element Admin';
 })

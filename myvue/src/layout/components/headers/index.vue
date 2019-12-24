@@ -41,6 +41,8 @@
 </template>
 
 <script>
+import Cookies from 'js-cookie'
+
 export default {
     data() {
         return {
@@ -53,6 +55,9 @@ export default {
                 window.open('https://panjiachen.github.io/vue-element-admin-site/#/')
             }else if(command == '项目地址') {
                 window.open('https://github.com/lixianhai/vue/tree/master/myvue')
+            }else if(command =='/login') {
+                Cookies.remove('user_token')
+                this.$router.push(command)
             }else {
                 this.$router.push(command)
             }
@@ -88,7 +93,7 @@ export default {
                 }
             }
             this.zoomIcon = !this.zoomIcon;
-        }
+        },
     }
 }
 </script>
