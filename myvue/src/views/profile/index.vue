@@ -228,15 +228,17 @@
 
 <script>
 import Cookies from 'js-cookie'
+import { getToken } from '@/utils/auth'
+
 export default {
     data() {
         return {
             tabs:'Activity',
-            name:JSON.parse(Cookies.get('user_token')).name
+            name:getToken().split('-')[0]
         }
     },
     created() {
-        
+        console.log(this.name)
     }
 }
 </script>

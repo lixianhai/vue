@@ -25,8 +25,8 @@
                     <el-dropdown trigger="click" @command="changeLanguage">
                         <img src="@/assets/languages.svg">
                         <el-dropdown-menu slot="dropdown">
-                            <el-dropdown-item command="zh">{{$t('login.zh')}}</el-dropdown-item>
-                            <el-dropdown-item command="en">{{$t('login.en')}}</el-dropdown-item>
+                            <el-dropdown-item v-for="item in selectList" :key="item.value" :disabled="command == item.command" :command="item.command">{{item.value}}</el-dropdown-item>
+                            <!-- <el-dropdown-item command="zh">{{$t('login.zh')}}</el-dropdown-item> -->
                         </el-dropdown-menu>
                     </el-dropdown>
                 </div>
@@ -65,7 +65,7 @@
                         <el-col :span="10">
                             {{$t('login.name')}}: admin
                         </el-col>
-                        <el-col :span="10">
+                        <el-col :span="14">
                             {{$t('login.password')}}: {{$t('login.passwordText')}}
                         </el-col>
                     </el-row>
@@ -73,7 +73,7 @@
                         <el-col :span="10">
                             {{$t('login.name')}}: editor
                         </el-col>
-                        <el-col :span="10">
+                        <el-col :span="14">
                             {{$t('login.password')}}: {{$t('login.passwordText')}}
                         </el-col>
                     </el-row>
@@ -121,7 +121,21 @@ export default {
                 password: [
                     {validator: password, trigger: 'blur'}
                 ]
-            }
+            },
+            selectList: [
+                { label: this.$t('login.zh'), value: this.$t('login.zh'), command:'zh' },
+                { label: this.$t('login.en'), value: this.$t('login.en'), command:'en' },
+                { label: this.$t('login.ja'), value: this.$t('login.ja'), command:'ja' },
+                { label: this.$t('login.ko'), value: this.$t('login.ko'), command:'ko' }
+            ],
+        }
+    },
+    mounted() {
+        console.log(this.selectList)
+    },
+    computed: {
+        command() {
+            return this.$store.state.seletCommand
         }
     },
     methods: {
@@ -141,6 +155,7 @@ export default {
             })
         },
         changeLanguage(val) {
+            this.$store.dispatch('addSelectCommand',val)
             this.$i18n.locale = val;
             this.$message({
                 message: 'Switch Language Success',

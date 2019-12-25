@@ -9,7 +9,8 @@
                 :class="tagsNavActiveClassIndex == index ? 'active':''"
                 @contextmenu.prevent="openMenu(item,$event)"
             >
-                {{item.title}}
+                {{$t(filterLanguages($t('navBar'),'navBar',item.languages))}}
+                <!-- {{this.$t(this.filterLanguages(this.$t('navBar'),'navBar',item.meta.languages))}} -->
                 <span v-if="item.title!=='首页'" @click.stop="closeTags(item)" class="el-icon-close"></span>
             </span>
         </el-scrollbar>
@@ -37,6 +38,7 @@ export default {
             var that = this;
             var obj = {
                 title:to.meta.title,
+                languages:to.meta.languages,
                 path:to.path
             }
             if(JSON.stringify(this.navInfo).indexOf(JSON.stringify(obj)) == -1 && obj.title !== '首页') {
@@ -59,7 +61,7 @@ export default {
         },
         navInfoArr() {
             var isNavInfo = JSON.parse(window.localStorage.getItem('navInfo'));
-            var navInfo = isNavInfo == null?[{title:'首页',path:'/dashboard'}]:isNavInfo;
+            var navInfo = isNavInfo == null?[{title:'首页',path:'/dashboard',languages:'dashboard'}]:isNavInfo;
             return navInfo
         }
     },
@@ -126,7 +128,7 @@ export default {
             if(view.title == '首页') {
                 newNavInfo = [view]
             }else {
-                newNavInfo = [{path:'/dashboard',title:'首页'},view]
+                newNavInfo = [{path:'/dashboard',title:'首页',languages:'dashboard'},view]
             }
             this.navInfo = newNavInfo;
             window.localStorage.setItem('navInfo',JSON.stringify(newNavInfo));
@@ -138,7 +140,7 @@ export default {
         },
         closeAllTags(view) {
             this.$nextTick(()=>{
-                this.navInfo = [{path:'/dashboard',title:'首页'}];
+                this.navInfo = [{path:'/dashboard',title:'首页',languages:'dashboard'}];
                 window.localStorage.setItem('navInfo',JSON.stringify(this.navInfo));
                 this.$store.commit('changeTagsNavActiveClassIndex',0)
                 if(this.$route.path !== '/dashboard') {
@@ -146,7 +148,13 @@ export default {
                 }
                 this.visible = false;
             })
-            
+        },
+        filterLanguages(targetObj, targetObjName, val) {
+            for(var i in targetObj) {
+                if(i == val) {
+                    return targetObjName + '.' + val
+                }
+            }
         }
     }
 }

@@ -25,8 +25,10 @@ Vue.config.productionTip = false
 const i18n = new VueI18n({ 
   locale: 'zh', // 定义默认语言为中文 
   messages: {   
-      'zh': require('@/languages/zh'),   
-      'en': require('@/languages/en') 
+    'zh': require('@/languages/zh'),   
+    'en': require('@/languages/en'),
+    'ja': require('@/languages/ja'),
+    'ko': require('@/languages/ko')
   }
 });
 

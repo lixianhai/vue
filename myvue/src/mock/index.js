@@ -13,7 +13,6 @@ Mock.mock('http://localhost:8080/userRoutesInfo', 'get', ( data ) => {
             }]   
         })
     }
-    console.log(JSON.parse(data.body))
     return resources
 })
 

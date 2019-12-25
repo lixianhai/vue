@@ -12,6 +12,7 @@ const store = new Vuex.Store({
     state: {
         tagsNavActiveClassIndex: -1,
         navActivePath: '',
+        seletCommand: 'zh',
         user: {
             token: getToken(),
             name: '',
@@ -42,6 +43,9 @@ const store = new Vuex.Store({
         SET_ROUTES: (state,routes) => {
             state.user.addRoutes = routes
             state.user.routes = constantRoutes.concat(routes)
+        },
+        SET_LANGUAGES_COMMAND(state,command) {
+            state.seletCommand = command
         }
     },
     actions: {
@@ -79,6 +83,8 @@ const store = new Vuex.Store({
                 }
                 store.commit('SET_ROUTES', accessedRoutes)
                 resolve(accessedRoutes)
+            }).catch(error => {
+                reject(error)
             })
         },
         resetToken(state) {
@@ -99,7 +105,6 @@ const store = new Vuex.Store({
             })
         },
         changeRoles(state,role) {
-            console.log(role)
             return new Promise(async(resolve,reject) => {
                 const token = role + '-token'
                 store.commit('SET_TOKEN', token)
@@ -113,6 +118,12 @@ const store = new Vuex.Store({
                 router.addRoutes(accessRoutes)
 
                 resolve()
+            })
+        },
+        addSelectCommand(state,val) {
+            return new Promise(async(resolve,reject) => {
+                store.commit('SET_LANGUAGES_COMMAND',val)
+                resolve();
             })
         }
     }

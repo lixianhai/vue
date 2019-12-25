@@ -41,7 +41,7 @@ export default {
     methods: {
         changeNavselect(index) {
             this.$store.commit('navChangeTagsNavActiveClassIndex',index);
-        }
+        },
     }
 }
 </script>

@@ -92,7 +92,7 @@ export default {
   data() {
     return {
       lineChartData: lineChartData.newVisitis,
-      userName: getToken().split('-')[0],
+      userName: getToken(),
     }
   },
   created() {

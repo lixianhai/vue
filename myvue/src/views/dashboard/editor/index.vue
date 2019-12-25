@@ -8,7 +8,7 @@
         </pan-thumb>
         <!-- <github-corner style="position: absolute; top: 0px; border: 0; right: 0;" /> -->
         <div class="info-container">
-          <span class="display_name">{{ userName=='editor'?'Normal Editor':'Suoer Admin' }}</span>
+          <span class="display_name">Normal Editor</span>
           <span style="font-size:20px;padding-top:20px;display:inline-block;">Editor's Dashboard</span>
         </div>
       </div>
@@ -37,7 +37,6 @@ export default {
   name: 'DashboardEditor',
   data() {
     return {
-      userName: getToken().split('-')[0],
       emptyGif: 'https://wpimg.wallstcn.com/0e03b7da-db9e-4819-ba10-9016ddfdaed3',
       avatar: 'https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif',
       years: null,

@@ -24,7 +24,9 @@ router.beforeEach(async(to, form, next)=>{
                     const accessRoutes = await store.dispatch('generateRoutes', roles)
                     router.addRoutes(accessRoutes)
                     // console.log(roles,accessRoutes,'roles')
+                    next({ ...to, replace: true })
                 } catch(error) {
+                    alert('这是什么')
                     await store.dispatch('resetToken')
                     next()
                 }
