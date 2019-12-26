@@ -17,13 +17,16 @@
           </div>
           <div>
               <AppMain />
+              <right-panel />
           </div>
       </div>
   </div>
 </template>
 
 <script>
+import RightPanel from '@/components/RightPanel'
 import {AppMain, NavBar, Breadcrumb, Tags, Headers} from './components'
+
 export default {
     name:'Layout',
     components: {
@@ -31,7 +34,8 @@ export default {
         NavBar,
         Breadcrumb,
         Tags,
-        Headers
+        Headers,
+        RightPanel
     }
 }
 </script>

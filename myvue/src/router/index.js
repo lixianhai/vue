@@ -40,7 +40,7 @@ export const constantRoutes = [
   {
     path: '/profile',
     component: Layout,
-    meta: { title: '个人中心',languages:'aaa' },
+    meta: { title: '个人中心' },
     redirect: '/profile',
     hidden: true,
     children: [

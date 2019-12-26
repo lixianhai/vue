@@ -9,14 +9,11 @@ router.beforeEach(async(to, form, next)=>{
     const hasToken = getToken()
 
     if(hasToken) {
-        // console.log('token存在')
         if(to.path === '/login') {
-            // console.log('登录页面')
             next()
         }else {
             const hasRoles = store.state.user.roles && store.state.user.roles.length > 0
             if (hasRoles) {
-                // console.log('存在大于0')
                 next()
             }else {
                 try {
@@ -26,7 +23,7 @@ router.beforeEach(async(to, form, next)=>{
                     // console.log(roles,accessRoutes,'roles')
                     next({ ...to, replace: true })
                 } catch(error) {
-                    alert('这是什么')
+                    alert('123')
                     await store.dispatch('resetToken')
                     next()
                 }
@@ -34,7 +31,6 @@ router.beforeEach(async(to, form, next)=>{
             next()
         }
     }else {
-        // console.log('token不存在')
         next();
     }
 })

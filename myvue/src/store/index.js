@@ -5,6 +5,7 @@ import { login,getInfo } from '@/api'
 import { getToken, setToken, removeToken } from '@/utils/auth'
 import { asyncRoutes,constantRoutes } from '@/router'
 import { resetRouter } from '@/router'
+// import variables from '../style/element-variables.scss'
  
 Vue.use(Vuex)
 
@@ -19,7 +20,8 @@ const store = new Vuex.Store({
             roles: [],
             addRoutes: [],
             routes: []
-        }
+        },
+        theme:'#1890ff'
     },
     mutations: {
         changeTagsNavActiveClassIndex: (state,index) => {

@@ -13,6 +13,7 @@ import './mock'
 import 'echarts/map/js/china'
 import 'element-ui/lib/theme-chalk/index.css'
 import './style/element-ui.less'
+import '../theme/index.css'
 import '@/redirect'
 import '@/icons'
 
