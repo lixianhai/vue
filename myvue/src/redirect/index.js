@@ -1,30 +1,31 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+import NProgress from 'nprogress' // progress bar
+import 'nprogress/nprogress.css' // progress bar style
 import store from '../store'
 import router from '../router'
 import { getToken } from '@/utils/auth'
 import thisVue from '../main'
 
+NProgress.configure({ showSpinner: false }) // NProgress Configuration
+
 const whiteList = ['/login', '/auth-redirect'] // no redirect whitelist
 
 router.beforeEach(async(to, form, next)=>{
-    console.log('进入了钩子函数')
 
+    NProgress.start()
     const hasToken = getToken()
 
     if(hasToken) {
-        console.log('有token')
         if(to.path === '/login') {
-            console.log('有token to.path=login')
             next()
+            NProgress.done()
         }else {
-            console.log('有token to.path！=login')
             const hasRoles = store.state.user.roles && store.state.user.roles.length > 0
             if (hasRoles) {
-                console.log('有路由列表')
+                
                 next()
             }else {
-                console.log('添加路由列表')
                 try {
                     const { roles } = await store.dispatch('getUserInfo')
                     const accessRoutes = await store.dispatch('generateRoutes', roles)
@@ -35,6 +36,7 @@ router.beforeEach(async(to, form, next)=>{
                     alert('123')
                     await store.dispatch('resetToken')
                     next()
+                    Progress.done()
                 }
             }
             next()
@@ -46,6 +48,7 @@ router.beforeEach(async(to, form, next)=>{
         } else {
         // other pages that do not have permission to access are redirected to the login page.
             next('/login')
+            Progress.done()
         }
     }
     if(thisVue) {
@@ -54,6 +57,11 @@ router.beforeEach(async(to, form, next)=>{
         document.title = 'Login - Vue Element Admin'
     }
 })
+
+router.afterEach(() => {
+    // finish progress bar
+    NProgress.done()
+})  
 
 function filterLanguages(targetObj, targetObjName, val) {
     for(var i in targetObj) {
