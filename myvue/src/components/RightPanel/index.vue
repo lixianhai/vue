@@ -61,14 +61,29 @@ export default {
   },
   data() {
     return {
-      show: false,
-      TagsView: false,
-      fixedHeader: false
+      show: false
     }
   },
   computed: {
     theme() {
       return this.$store.state.theme
+    },
+    TagsView: {
+      get() {
+        console.log(this.$store.state.isTagView)
+        return this.$store.state.isTagView
+      },
+      set(status) {
+        this.$store.dispatch('changeTagsSwitch',status)
+      }
+    },
+    fixedHeader: {
+      get() {
+        return this.$store.state.fixedHeader
+      },
+      set(status) {
+        this.$store.dispatch('changeHeaderSwitch',status)
+      }
     }
   },
   watch: {

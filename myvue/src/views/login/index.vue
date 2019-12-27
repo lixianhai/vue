@@ -37,7 +37,7 @@
                         <i class="el-icon-s-custom"></i>
                     </el-col>
                     <el-col :span="23">
-                        <el-input v-model="ruleForm.name" placeholder="Username"></el-input>
+                        <el-input v-model="ruleForm.name" placeholder="Username" ref="username"></el-input>
                     </el-col>
                 </el-row>
             </el-form-item>
@@ -47,7 +47,7 @@
                         <i class="el-icon-lock"></i>
                     </el-col>
                     <el-col :span="23">
-                        <el-input v-model="ruleForm.password" placeholder="Password" show-password @keyup.enter.native="login('ruleForm')"></el-input>
+                        <el-input v-model="ruleForm.password" placeholder="Password" show-password @keyup.enter.native="login('ruleForm')" ref="password"></el-input>
                     </el-col>
                     <!-- <el-col :span="1">
                         <img src="@/assets/open_eays.svg">
@@ -131,7 +131,11 @@ export default {
         }
     },
     mounted() {
-        console.log(this.selectList)
+        if (this.ruleForm.name === '') {
+            this.$refs.username.focus()
+        } else if (this.ruleForm.password === '') {
+            this.$refs.password.focus()
+        }
     },
     computed: {
         command() {

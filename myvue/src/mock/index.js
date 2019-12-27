@@ -18,6 +18,9 @@ Mock.mock('http://localhost:8080/userRoutesInfo', 'get', ( data ) => {
 
 Mock.mock('http://localhost:8080/login', 'get', ( params ) => {
     var userName = params.body;
+    setTimeout(()=>{
+        userName = null;
+    },10000)
     return userName
 })
 

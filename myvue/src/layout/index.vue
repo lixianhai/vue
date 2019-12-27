@@ -4,18 +4,18 @@
           <NavBar />
       </div>
       <div class="rightContentWrap">
-          <div class="headers_wrap">
-            <div class="header_left">
-                <Breadcrumb />
+          <div :class="{'fixed-header':fixedHeader}">
+            <div class="headers_wrap">
+                <div class="header_left">
+                    <Breadcrumb />
+                </div>
+                <div class="header_right">
+                    <Headers />
+                </div>
             </div>
-             <div class="header_right">
-                 <Headers />
-             </div>
+            <Tags v-if="isTagView" />
           </div>
-          <div>
-              <Tags />
-          </div>
-          <div>
+          <div :style="{'margin-top':appMainMargin}">
               <AppMain />
               <right-panel />
           </div>
@@ -36,6 +36,23 @@ export default {
         Tags,
         Headers,
         RightPanel
+    },
+    computed: {
+        fixedHeader() {
+            return this.$store.state.fixedHeader
+        },
+        isTagView() {
+            return this.$store.state.isTagView
+        },
+        appMainMargin() {
+            if(this.fixedHeader) {
+                if(this.isTagView) {
+                    return '85px'
+                }else{
+                    return '50px'
+                }
+            }
+        }
     }
 }
 </script>
@@ -51,7 +68,14 @@ export default {
     }
     .rightContentWrap {
         margin-left: 210px;
+        .fixed-header {
+            position: fixed;
+            top: 0;
+            width: calc(100% - 210px);
+            z-index: 9;
+        }
         .headers_wrap {
+            width: 100%;
             height: 50px;
             overflow: hidden;
             position: relative;

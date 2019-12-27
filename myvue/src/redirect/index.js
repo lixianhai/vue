@@ -36,7 +36,7 @@ router.beforeEach(async(to, form, next)=>{
                     alert('123')
                     await store.dispatch('resetToken')
                     next()
-                    Progress.done()
+                    NProgress.done()
                 }
             }
             next()
@@ -48,7 +48,7 @@ router.beforeEach(async(to, form, next)=>{
         } else {
         // other pages that do not have permission to access are redirected to the login page.
             next('/login')
-            Progress.done()
+            NProgress.done()
         }
     }
     if(thisVue) {

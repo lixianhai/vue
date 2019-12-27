@@ -21,7 +21,9 @@ const store = new Vuex.Store({
             addRoutes: [],
             routes: []
         },
-        theme:'#1890ff'
+        theme:'#1890ff',
+        isTagView:true,
+        fixedHeader:false
     },
     mutations: {
         changeTagsNavActiveClassIndex: (state,index) => {
@@ -48,6 +50,12 @@ const store = new Vuex.Store({
         },
         SET_LANGUAGES_COMMAND(state,command) {
             state.seletCommand = command
+        },
+        CHANGR_TAGS_SWITCH(state, status) {
+            state.isTagView = status
+        },
+        CHANGR_HEADER_SWITCH(state, status) {
+            state.fixedHeader = status
         }
     },
     actions: {
@@ -123,11 +131,25 @@ const store = new Vuex.Store({
             })
         },
         addSelectCommand(state,val) {
-            return new Promise(async(resolve,reject) => {
+            return new Promise((resolve,reject) => {
                 store.commit('SET_LANGUAGES_COMMAND',val)
                 resolve();
             })
-        }
+        },
+        changeHeaderSwitch(state, status) {
+            return new Promise((resolve,reject) => {
+                store.commit('CHANGR_HEADER_SWITCH',status)
+                resolve()
+            })
+            
+        },
+        changeTagsSwitch(state, status) {
+            console.log(status)
+            return new Promise((resolve,reject) => {
+                store.commit('CHANGR_TAGS_SWITCH',status)
+                resolve()
+            })
+        },
     }
 })
 
