@@ -85,4 +85,7 @@ export default {
         }
     }
 }
+/deep/.el-submenu .el-menu-item:hover {
+    background: #001528!important;
+}
 </style>

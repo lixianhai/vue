@@ -12,6 +12,7 @@ module.exports = {
         ko:'한국어'
     },
     navBar: {
+        login: 'ログイン',
         dashboard:'トップ',
         charts:'チャート',
         waterContentChart:'量を測る',

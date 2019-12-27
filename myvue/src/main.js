@@ -34,7 +34,7 @@ const i18n = new VueI18n({ 
 });
 
 /* eslint-disable no-new */
-new Vue({
+const vue = new Vue({
   el: '#app',
   router,
   i18n,
@@ -43,3 +43,5 @@ new Vue({
   components: { App },
   template: '<App/>'
 })
+
+export default vue

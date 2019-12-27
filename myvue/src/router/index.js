@@ -8,17 +8,19 @@ export const constantRoutes = [
   {
     path: '/login',
     component: () => import('@/views/login'),
-    meta: { title:'登录' },
+    meta: { title:'登录',languages:'login' },
     hidden: true
   },
   {
     path: '/404',
     component: () => import('@/views/error-page/404'),
+    meta: { title:'404',languages:'404' },
     hidden: true
   },
   {
     path: '/401',
     component: () => import('@/views/error-page/401'),
+    meta: { title:'401',languages:'401' },
     hidden: true
   },
   {

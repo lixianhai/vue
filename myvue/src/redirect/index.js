@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import store from '../store'
 import router from '../router'
 import { getToken } from '@/utils/auth'
+import thisVue from '../main'
 
 router.beforeEach(async(to, form, next)=>{
 
@@ -33,4 +34,17 @@ router.beforeEach(async(to, form, next)=>{
     }else {
         next();
     }
+    if(thisVue) {
+        document.title = thisVue.$t(filterLanguages(thisVue.$t('navBar'),'navBar',to.meta.languages)) + ' - Vue Element Admin'
+    }else {
+        document.title = 'Login - Vue Element Admin'
+    }
 })
+
+function filterLanguages(targetObj, targetObjName, val) {
+    for(var i in targetObj) {
+        if(i == val) {
+            return targetObjName + '.' + val
+        }
+    }
+}

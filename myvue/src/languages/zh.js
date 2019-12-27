@@ -12,6 +12,7 @@ module.exports = {
         ko:'한국어'
     },
     navBar: {
+        login: '登录',
         dashboard:'首页',
         charts:'图表',
         waterContentChart:'含量',
