@@ -1,7 +1,7 @@
 <template>
     <div class="content-wrap">
-        <div style="margin-bottom:15px;">你的权限：{{ roles }}</div>
-        切换权限：
+        <div style="margin-bottom:15px;">{{this.$t('page.permission.pagePer.yourRole')}}{{ roles }}</div>
+        {{this.$t('page.permission.pagePer.changeRole')}}
         <el-radio-group v-model="switchRoles">
             <el-radio-button label="editor" />
             <el-radio-button label="admin" />
@@ -11,7 +11,7 @@
             <div>
                 <span class="permission-alert">
                     Only
-                    <el-tag class="permission-tag" size="small">{{ userName }}</el-tag> can see this
+                    <el-tag class="permission-tag" size="small">{{ roles }}</el-tag> can see this
                 </span>
             </div>
 
@@ -26,19 +26,19 @@
     </div>
 </template>
 <script>
-import { getToken } from '@/utils/auth'
 
 export default {
     data() {
         return {
-            userName: getToken().split('-')[0]
+            
         }
     },
     created() {
-        console.log(this.userName)
+        // console.log(this.roles)
     },
     computed: {
         roles() {
+            console.log(this.$store.state.user.roles)
             return this.$store.state.user.roles
         },
         switchRoles: {
@@ -46,7 +46,6 @@ export default {
                 return this.roles[0]
             },
             set(val) {
-                this.userName = val;
                 this.$store.dispatch('changeRoles', val)
             }
         }

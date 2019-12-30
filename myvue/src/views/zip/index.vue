@@ -1,8 +1,8 @@
 <template>
   <div class="app-container content-wrap">
-    <el-input v-model="filename" placeholder="Please enter the file name (default file)" style="width:300px;" prefix-icon="el-icon-document" />
+    <el-input v-model="filename" :placeholder="this.$t('page.excel.exportExcel.fillName')" style="width:300px;" prefix-icon="el-icon-document" />
     <el-button :loading="downloadLoading" style="margin-bottom:20px;" type="primary" icon="document" @click="handleDownload">
-      Export Zip
+      {{this.$t('page.zip.export')}}
     </el-button>
     <el-table :data="list" element-loading-text="拼命加载中" border fit highlight-current-row>
       <el-table-column align="center" label="ID" width="95">

@@ -7,15 +7,15 @@
       </div>
       <div class="rightPanel-items">
         <div class="drawer-container">
-          <h3>系统布局配置</h3>
+          <h3>{{this.$t('page.components.drawer.title')}}</h3>
           <div class="drawer-item">
-            <span>主题色</span>
+            <span>{{this.$t('page.components.drawer.theme')}}</span>
             <div class="theme-picker">
               <theme class="el-color"/>
             </div>
           </div>
           <div class="drawer-item">
-            <span>开启 Tags-View</span>
+            <span>{{this.$t('page.components.drawer.tagsView')}}</span>
             <div class="theme-picker">
               <el-switch
                 v-model="TagsView"
@@ -26,7 +26,7 @@
             </div>
           </div>
           <div class="drawer-item">
-            <span>固定 Header</span>
+            <span>{{this.$t('page.components.drawer.header')}}</span>
             <div class="theme-picker">
               <el-switch
                 v-model="fixedHeader"

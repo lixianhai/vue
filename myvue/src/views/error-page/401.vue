@@ -1,26 +1,26 @@
 <template>
   <div class="errPage-container">
     <el-button icon="arrow-left" class="pan-back-btn" @click="back">
-      返回
+      {{this.$t('page.components.401.callback')}}
     </el-button>
     <el-row>
       <el-col :span="12">
         <h1 class="text-jumbo text-ginormous">
           Oops!
         </h1>
-        <h2>你没有权限去该页面</h2>
-        <h6>如有不满请联系你领导</h6>
+        <h2>{{this.$t('page.components.401.noRole')}}</h2>
+        <h6>{{this.$t('page.components.401.phone')}}</h6>
         <ul class="list-unstyled">
-          <li>或者你可以去:</li>
+          <li>{{this.$t('page.components.401.perhaps')}}:</li>
           <li class="link-type">
             <router-link to="/dashboard">
-              回首页
+              {{this.$t('page.components.401.goHome')}}
             </router-link>
           </li>
           <li class="link-type">
-            <a href="https://www.taobao.com/">随便看看</a>
+            <a href="https://www.taobao.com/">{{this.$t('page.components.401.look')}}</a>
           </li>
-          <li><a href="#" @click.prevent="dialogVisible=true">点我看图</a></li>
+          <li><a href="#" @click.prevent="dialogVisible=true">{{this.$t('page.components.401.picture')}}</a></li>
         </ul>
       </el-col>
       <el-col :span="12">

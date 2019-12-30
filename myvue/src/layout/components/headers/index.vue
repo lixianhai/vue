@@ -59,6 +59,9 @@ export default {
             return this.$store.state.seletCommand
         }
     },
+    created() {
+        console.log(this.command)
+    },
     methods: {
         changeUserSelect(command) {
             if(command == 'Docs') {
@@ -78,6 +81,7 @@ export default {
                 message: 'Switch Language Success',
                 type: 'success'
             });
+            Cookies.set('Languages',val)
         },
         zoom() {
             var html = document.querySelector('html');

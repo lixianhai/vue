@@ -60,6 +60,7 @@ export default {
         if (typeof innerText !== 'string') return
         style.innerText = this.updateStyle(innerText, originalCluster, themeCluster)
       })
+      this.$store.commit('drawerButtonColor',val)
       this.$message({
         message: 'Skin Success',
         type: 'success'
@@ -69,6 +70,7 @@ export default {
 
   methods: {
     updateStyle(style, oldCluster, newCluster) {
+      console.log(123)
       let newStyle = style
       oldCluster.forEach((color, index) => {
         newStyle = newStyle.replace(new RegExp(color, 'ig'), newCluster[index])
@@ -77,6 +79,7 @@ export default {
     },
 
     getCSSString(url, callback, variable) {
+      console.log(123)
       const xhr = new XMLHttpRequest()
       xhr.onreadystatechange = () => {
         if (xhr.readyState === 4 && xhr.status === 200) {
@@ -89,6 +92,7 @@ export default {
     },
 
     getThemeCluster(theme) {
+      console.log(123)
       const tintColor = (color, tint) => {
         let red = parseInt(color.slice(0, 2), 16)
         let green = parseInt(color.slice(2, 4), 16)

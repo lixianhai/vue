@@ -1,73 +1,73 @@
 <template>
     <div class="content-wrap">
         <div class="box-shadow content-wrap">
-            <h2>对齐方式</h2>
+            <h2>{{this.$t('page.components.form.alginType')}}</h2>
             <el-radio-group v-model="labelPosition" size="small">
-                <el-radio-button label="left">左对齐</el-radio-button>
-                <el-radio-button label="right">右对齐</el-radio-button>
-                <el-radio-button label="top">顶部对齐</el-radio-button>
+                <el-radio-button label="left">{{this.$t('page.components.form.leftAlgin')}}</el-radio-button>
+                <el-radio-button label="right">{{this.$t('page.components.form.rightAlgin')}}</el-radio-button>
+                <el-radio-button label="top">{{this.$t('page.components.form.topAlgin')}}</el-radio-button>
             </el-radio-group>
             <div style="margin: 20px;"></div>
             <el-form :label-position="labelPosition" label-width="80px" :model="formLabelAlign">
-                <el-form-item label="名称">
+                <el-form-item :label="this.$t('page.components.form.name')">
                     <el-input v-model="formLabelAlign.name"></el-input>
                 </el-form-item>
-                <el-form-item label="活动区域">
+                <el-form-item :label="this.$t('page.components.form.activityRegion')">
                     <el-input v-model="formLabelAlign.region"></el-input>
                 </el-form-item>
-                <el-form-item label="活动形式">
+                <el-form-item :label="this.$t('page.components.form.activityForm')">
                     <el-input v-model="formLabelAlign.type"></el-input>
                 </el-form-item>
             </el-form>
         </div>
         <div class="box-shadow content-wrap">
-            <h2>表单验证</h2>
+            <h2>{{this.$t('page.components.form.formValidation')}}</h2>
             <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="100px" class="demo-ruleForm">
-                <el-form-item label="活动名称" prop="name">
+                <el-form-item :label="this.$t('page.components.form.activityName')" prop="name">
                     <el-input v-model="ruleForm.name"></el-input>
                 </el-form-item>
-                <el-form-item label="活动区域" prop="region">
-                    <el-select v-model="ruleForm.region" placeholder="请选择活动区域">
+                <el-form-item :label="this.$t('page.components.form.activityRegion')" prop="region">
+                    <el-select v-model="ruleForm.region" :placeholder="this.$t('page.components.form.defaultSelectActivityRegion')">
                     <el-option label="区域一" value="shanghai"></el-option>
                     <el-option label="区域二" value="beijing"></el-option>
                     </el-select>
                 </el-form-item>
-                <el-form-item label="活动时间" required>
+                <el-form-item :label="this.$t('page.components.form.activityTime')" required>
                     <el-col :span="11">
                     <el-form-item prop="date1">
-                        <el-date-picker type="date" placeholder="选择日期" v-model="ruleForm.date1" style="width: 100%;"></el-date-picker>
+                        <el-date-picker type="date" :placeholder="this.$t('page.components.form.defaultSelectDate')" v-model="ruleForm.date1" style="width: 100%;"></el-date-picker>
                     </el-form-item>
                     </el-col>
                     <el-col class="line" :span="2">-</el-col>
                     <el-col :span="11">
                     <el-form-item prop="date2">
-                        <el-time-picker placeholder="选择时间" v-model="ruleForm.date2" style="width: 100%;"></el-time-picker>
+                        <el-time-picker :placeholder="this.$t('page.components.form.defaultSelectTime')" v-model="ruleForm.date2" style="width: 100%;"></el-time-picker>
                     </el-form-item>
                     </el-col>
                 </el-form-item>
-                <el-form-item label="即时配送" prop="delivery">
+                <el-form-item :label="this.$t('page.components.form.instantDelivery')" prop="delivery">
                     <el-switch v-model="ruleForm.delivery"></el-switch>
                 </el-form-item>
-                <el-form-item label="活动性质" prop="type">
+                <el-form-item :label="this.$t('page.components.form.activityNature')" prop="type">
                     <el-checkbox-group v-model="ruleForm.type">
-                    <el-checkbox label="美食/餐厅线上活动" name="type"></el-checkbox>
-                    <el-checkbox label="地推活动" name="type"></el-checkbox>
-                    <el-checkbox label="线下主题活动" name="type"></el-checkbox>
-                    <el-checkbox label="单纯品牌曝光" name="type"></el-checkbox>
+                    <el-checkbox :label="this.$t('page.components.form.errorFood')" name="type"></el-checkbox>
+                    <el-checkbox :label="this.$t('page.components.form.errorGroundPush')" name="type"></el-checkbox>
+                    <el-checkbox :label="this.$t('page.components.form.errorTheme')" name="type"></el-checkbox>
+                    <el-checkbox :label="this.$t('page.components.form.errorSimple')" name="type"></el-checkbox>
                     </el-checkbox-group>
                 </el-form-item>
-                <el-form-item label="特殊资源" prop="resource">
+                <el-form-item :label="this.$t('page.components.form.specialresources')" prop="resource">
                     <el-radio-group v-model="ruleForm.resource">
-                    <el-radio label="线上品牌商赞助"></el-radio>
-                    <el-radio label="线下场地免费"></el-radio>
+                    <el-radio :label="this.$t('page.components.form.errorSponsor')"></el-radio>
+                    <el-radio :label="this.$t('page.components.form.errorPlaceOfOrigin')"></el-radio>
                     </el-radio-group>
                 </el-form-item>
-                <el-form-item label="活动形式" prop="desc">
+                <el-form-item :label="this.$t('page.components.form.activityForm')" prop="desc">
                     <el-input type="textarea" v-model="ruleForm.desc"></el-input>
                 </el-form-item>
                 <el-form-item>
-                    <el-button type="primary" @click="submitForm('ruleForm')">立即创建</el-button>
-                    <el-button @click="resetForm('ruleForm')">重置</el-button>
+                    <el-button type="primary" @click="submitForm('ruleForm')">{{this.$t('button.createButton')}}</el-button>
+                    <el-button @click="resetForm('ruleForm')">{{this.$t('button.reset')}}</el-button>
                 </el-form-item>
             </el-form>
         </div>
@@ -96,26 +96,26 @@
         },
         rules: {
           name: [
-            { required: true, message: '请输入活动名称', trigger: 'blur' },
+            { required: true, message: this.$t('page.components.form.errorActivityName'), trigger: 'blur' },
             { min: 3, max: 5, message: '长度在 3 到 5 个字符', trigger: 'blur' }
           ],
           region: [
-            { required: true, message: '请选择活动区域', trigger: 'change' }
+            { required: true, message: this.$t('page.components.form.erroractivityRegion'), trigger: 'change' }
           ],
           date1: [
-            { type: 'date', required: true, message: '请选择日期', trigger: 'change' }
+            { type: 'date', required: true, message: this.$t('page.components.form.errorSelectDate'), trigger: 'change' }
           ],
           date2: [
-            { type: 'date', required: true, message: '请选择时间', trigger: 'change' }
+            { type: 'date', required: true, message: this.$t('page.components.form.errorSelectTime'), trigger: 'change' }
           ],
           type: [
-            { type: 'array', required: true, message: '请至少选择一个活动性质', trigger: 'change' }
+            { type: 'array', required: true, message: this.$t('page.components.form.length1'), trigger: 'change' }
           ],
           resource: [
-            { required: true, message: '请选择活动资源', trigger: 'change' }
+            { required: true, message: this.$t('page.components.form.errorSelectTime'), trigger: 'change' }
           ],
           desc: [
-            { required: true, message: '请填写活动形式', trigger: 'blur' }
+            { required: true, message: this.$t('page.components.form.errorSelectTime'), trigger: 'blur' }
           ]
         }
       };

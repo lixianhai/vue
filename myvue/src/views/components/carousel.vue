@@ -3,7 +3,7 @@
         <div class="box-shadow content-wrap">
             <el-row :gutter="20">
                 <el-col :span="12">
-                    <div class="demonstration">默认 Hover 指示器触发</div>
+                    <div class="demonstration">{{this.$t('page.components.carousel.hover')}}</div>
                     <el-carousel height="200px">
                         <el-carousel-item v-for="item in 4" :key="item">
                             <h3 class="small">{{ item }}</h3>
@@ -11,7 +11,7 @@
                     </el-carousel>
                 </el-col>
                 <el-col :span="12">
-                    <div class="demonstration">Click 指示器触发</div>
+                    <div class="demonstration">{{this.$t('page.components.carousel.click')}}</div>
                     <el-carousel trigger="click" height="200px">
                         <el-carousel-item v-for="item in 4" :key="item">
                             <h3 class="small">{{ item }}</h3>
@@ -21,7 +21,7 @@
             </el-row>
         </div>
         <div class="box-shadow content-wrap">
-            <h2>卡片化</h2>
+            <h2>{{this.$t('page.components.carousel.card')}}</h2>
             <el-carousel :interval="4000" type="card" height="300px">
                 <el-carousel-item>
                     <img src="@/assets/鬼刀1.jpg">
@@ -38,7 +38,7 @@
             </el-carousel>
         </div>
         <div class="box-shadow content-wrap">
-            <h2>轮播方向</h2>
+            <h2>{{this.$t('page.components.carousel.direction')}}</h2>
             <el-carousel height="650px" direction="vertical">
                 <el-carousel-item>
                     <img src="@/assets/鬼刀1.jpg">

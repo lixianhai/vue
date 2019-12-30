@@ -1,7 +1,7 @@
 <template>
     <div class="content-wrap">
-        <div style="margin-bottom:15px;">你的权限：{{ roles }}</div>
-        切换权限：
+        <div style="margin-bottom:15px;">{{this.$t('page.permission.pagePer.yourRole')}}{{ roles }}</div>
+        {{this.$t('page.permission.pagePer.changeRole')}}
         <el-radio-group v-model="switchRoles">
             <el-radio-button label="editor" />
             <el-radio-button label="admin" />
@@ -20,6 +20,7 @@ export default {
                 return this.roles[0]
             },
             set(val) {
+                console.log(val)
                 this.$store.dispatch('changeRoles', val)
             }
         }

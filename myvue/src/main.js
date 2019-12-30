@@ -8,6 +8,7 @@ import ElementUI from 'element-ui'
 import VueI18n from 'vue-i18n'
 import VueParticles from 'vue-particles'
 import echarts from 'echarts'
+import Cookies from 'js-cookie'
 import 'echarts//theme/macarons.js'
 import './mock'
 import 'echarts/map/js/china'
@@ -24,7 +25,7 @@ Vue.use(VueParticles)
 Vue.config.productionTip = false
 
 const i18n = new VueI18n({ 
-  locale: 'zh', // 定义默认语言为中文 
+  locale: Cookies.get('Languages') || 'zh', // 定义默认语言为中文 
   messages: {   
     'zh': require('@/languages/zh'),   
     'en': require('@/languages/en'),

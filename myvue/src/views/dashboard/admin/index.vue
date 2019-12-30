@@ -54,7 +54,6 @@ import TodoList from '../components/TodoList'
 import BoxCard from '../components/BoxCard'
 import Cookies from 'js-cookie'
 import PanThumb from '@/components/PanThumb'
-import { getToken, setToken, removeToken } from '@/utils/auth'
 
 const lineChartData = {
   newVisitis: {
@@ -91,8 +90,7 @@ export default {
   },
   data() {
     return {
-      lineChartData: lineChartData.newVisitis,
-      userName: getToken(),
+      lineChartData: lineChartData.newVisitis
     }
   },
   created() {

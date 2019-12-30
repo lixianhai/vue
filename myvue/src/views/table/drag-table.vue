@@ -53,10 +53,10 @@
       </el-table-column>
     </el-table>
     <div class="show-d">
-      <el-tag>The default order :</el-tag> {{ oldList }}
+      <el-tag>{{this.$t('page.table.drapTable.defauleSort')}}</el-tag> {{ oldList }}
     </div>
     <div class="show-d">
-      <el-tag>The after dragging order :</el-tag> {{ newList }}
+      <el-tag>{{this.$t('page.table.drapTable.sort')}}</el-tag> {{ newList }}
     </div>
   </div>
 </template>

@@ -1,5 +1,4 @@
 import Vue from 'vue'
-import Router from 'vue-router'
 import NProgress from 'nprogress' // progress bar
 import 'nprogress/nprogress.css' // progress bar style
 import store from '../store'
@@ -33,7 +32,6 @@ router.beforeEach(async(to, form, next)=>{
                     // console.log(roles,accessRoutes,'roles')
                     next({ ...to, replace: true })
                 } catch(error) {
-                    alert('123')
                     await store.dispatch('resetToken')
                     next()
                     NProgress.done()

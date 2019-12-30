@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import router from '../router'
+import Cookies from 'js-cookie'
 import { login,getInfo } from '@/api'
 import { getToken, setToken, removeToken } from '@/utils/auth'
 import { asyncRoutes,constantRoutes } from '@/router'
@@ -13,7 +14,6 @@ const store = new Vuex.Store({
     state: {
         tagsNavActiveClassIndex: -1,
         navActivePath: '',
-        seletCommand: 'zh',
         user: {
             token: getToken(),
             name: '',
@@ -22,8 +22,10 @@ const store = new Vuex.Store({
             routes: []
         },
         theme:'#1890ff',
+        seletCommand: 'zh',
         isTagView:true,
-        fixedHeader:false
+        fixedHeader:false,
+        // buttonColor:''
     },
     mutations: {
         changeTagsNavActiveClassIndex: (state,index) => {
@@ -34,6 +36,9 @@ const store = new Vuex.Store({
         },
         removeTagsNavActiveClassIndex: (state) => {
             state.tagsNavActiveClassIndex-- ;
+        },
+        drawerButtonColor(state, color) {
+            state.theme = color
         },
         SET_TOKEN(state,token) {
             state.user.token = token;
@@ -48,14 +53,14 @@ const store = new Vuex.Store({
             state.user.addRoutes = routes
             state.user.routes = constantRoutes.concat(routes)
         },
-        SET_LANGUAGES_COMMAND(state,command) {
-            state.seletCommand = command
-        },
         CHANGR_TAGS_SWITCH(state, status) {
             state.isTagView = status
         },
         CHANGR_HEADER_SWITCH(state, status) {
             state.fixedHeader = status
+        },
+        SET_LANGUAGES_SELECTED(state, selected) {
+            state.seletCommand = selected
         }
     },
     actions: {
@@ -110,6 +115,7 @@ const store = new Vuex.Store({
                 store.commit('SET_TOKEN', '')
                 store.commit('SET_ROLES', [])
                 removeToken()
+                Cookies.remove('Languages')
                 resetRouter()
                 resolve()
             })
@@ -130,10 +136,10 @@ const store = new Vuex.Store({
                 resolve()
             })
         },
-        addSelectCommand(state,val) {
+        addSelectCommand(state, selected) {
             return new Promise((resolve,reject) => {
-                store.commit('SET_LANGUAGES_COMMAND',val)
-                resolve();
+                store.commit('SET_LANGUAGES_SELECTED',selected)
+                resolve()
             })
         },
         changeHeaderSwitch(state, status) {

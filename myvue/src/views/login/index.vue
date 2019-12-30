@@ -165,6 +165,7 @@ export default {
                 message: 'Switch Language Success',
                 type: 'success'
             });
+            Cookies.set('Languages',val)
         }
     }
 }

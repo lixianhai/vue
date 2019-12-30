@@ -22,7 +22,7 @@
         {{ hours }} : {{ minutes}} : {{ seconds }}
       </div>
       <div class="text-center date-diff">
-        距离春节仅剩 <span> {{ dateDiff }} </span> 天
+        {{this.$t('page.home.editor.springFestival_1')}} <span> {{ dateDiff }} </span> {{this.$t('page.home.editor.springFestival_2')}}
       </div>
     </div>
   </div>
@@ -30,7 +30,6 @@
 
 <script>
 import PanThumb from '@/components/PanThumb'
-import { getToken, setToken, removeToken } from '@/utils/auth'
 
 export default {
   components: { PanThumb },

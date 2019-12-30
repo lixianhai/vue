@@ -1,6 +1,6 @@
 <template>
     <div class="content-wrap">
-        <el-button type="primary" @click="handleAddRole">New Role</el-button>
+        <el-button type="primary" @click="handleAddRole">{{this.$t('button.newRole')}}</el-button>
 
         <el-table :data="rolesList" style="width: 100%;margin-top:30px;" border>
             <el-table-column align="center" prop="roleName" label="Role Key" width="220"></el-table-column>
@@ -8,8 +8,8 @@
             <el-table-column align="header-center" prop="describe" label="Description"></el-table-column>
             <el-table-column align="center" label="Operations">
                 <template slot-scope="scope">
-                    <el-button type="primary" size="small" @click="handleEdit(scope)">Edit</el-button>
-                    <el-button type="danger" size="small" @click="handleDelete(scope)">Delete</el-button>
+                    <el-button type="primary" size="small" @click="handleEdit(scope)">{{Edit}}</el-button>
+                    <el-button type="danger" size="small" @click="handleDelete(scope)">{{Delete}}</el-button>
                 </template>
             </el-table-column>
         </el-table>
@@ -41,6 +41,8 @@
 export default {
     data() {
         return {
+            Edit: this.$t('button.edit'),
+            Delete: this.$t('button.delete'),
             dialogVisible: false,
             dialogType: 'new',
             editIndex: -1,

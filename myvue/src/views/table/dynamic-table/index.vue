@@ -1,12 +1,12 @@
 <template>
   <div class="app-container content-wrap">
     <div style="margin:0 0 5px 20px">
-      Fixed header, sorted by header order,
+      {{this.$t('page.table.dynamicTable.fiexdHeader')}}
     </div>
     <fixed-thead />
 
     <div style="margin:30px 0 5px 20px">
-      Not fixed header, sorted by click order
+      {{this.$t('page.table.dynamicTable.NoFiexdHeader')}}
     </div>
     <unfixed-thead />
   </div>

@@ -2,30 +2,30 @@
     <div class="content-wrap">
         <div class="box-shadow content-wrap">
             <el-row>
-                <h2>基础用法</h2>
+                <h2>{{this.$t('page.components.button.BasicsButton')}}</h2>
                 <el-col>
-                    <el-button>默认按钮</el-button>
-                    <el-button type="primary">主要按钮</el-button>
-                    <el-button type="success">成功按钮</el-button>
-                    <el-button type="info">信息按钮</el-button>
-                    <el-button type="warning">警告按钮</el-button>
-                    <el-button type="danger">危险按钮</el-button>
+                    <el-button>{{this.$t('button.defaultButton')}}</el-button>
+                    <el-button type="primary">{{this.$t('button.maintButton')}}</el-button>
+                    <el-button type="success">{{this.$t('button.successtButton')}}</el-button>
+                    <el-button type="info">{{this.$t('button.infoButton')}}</el-button>
+                    <el-button type="warning">{{this.$t('button.warningButton')}}</el-button>
+                    <el-button type="danger">{{this.$t('button.dangerButton')}}</el-button>
                 </el-col>
                 <el-col>
-                    <el-button plain>朴素按钮</el-button>
-                    <el-button type="primary" plain>主要按钮</el-button>
-                    <el-button type="success" plain>成功按钮</el-button>
-                    <el-button type="info" plain>信息按钮</el-button>
-                    <el-button type="warning" plain>警告按钮</el-button>
-                    <el-button type="danger" plain>危险按钮</el-button>
+                    <el-button plain>{{this.$t('button.simpleButton')}}</el-button>
+                    <el-button type="primary" plain>{{this.$t('button.maintButton')}}</el-button>
+                    <el-button type="success" plain>{{this.$t('button.successtButton')}}</el-button>
+                    <el-button type="info" plain>{{this.$t('button.infoButton')}}</el-button>
+                    <el-button type="warning" plain>{{this.$t('button.warningButton')}}</el-button>
+                    <el-button type="danger" plain>{{this.$t('button.dangerButton')}}</el-button>
                 </el-col>
                 <el-col>
-                    <el-button round>圆角按钮</el-button>
-                    <el-button type="primary" round>主要按钮</el-button>
-                    <el-button type="success" round>成功按钮</el-button>
-                    <el-button type="info" round>信息按钮</el-button>
-                    <el-button type="warning" round>警告按钮</el-button>
-                    <el-button type="danger" round>危险按钮</el-button>
+                    <el-button round>{{this.$t('button.raduisButton')}}</el-button>
+                    <el-button type="primary" round>{{this.$t('button.maintButton')}}</el-button>
+                    <el-button type="success" round>{{this.$t('button.successtButton')}}</el-button>
+                    <el-button type="info" round>{{this.$t('button.infoButton')}}</el-button>
+                    <el-button type="warning" round>{{this.$t('button.warningButton')}}</el-button>
+                    <el-button type="danger" round>{{this.$t('button.dangerButton')}}</el-button>
                 </el-col>
                 <el-col>
                     <el-button icon="el-icon-search" circle></el-button>
@@ -39,44 +39,44 @@
         </div>
         <div class="box-shadow content-wrap">
             <el-row>
-                <h2>禁用状态</h2>
+                <h2>{{this.$t('page.components.button.disabledButton')}}</h2>
                 <el-col>
-                    <el-button disabled>默认按钮</el-button>
-                    <el-button type="primary" disabled>主要按钮</el-button>
-                    <el-button type="success" disabled>成功按钮</el-button>
-                    <el-button type="info" disabled>信息按钮</el-button>
-                    <el-button type="warning" disabled>警告按钮</el-button>
-                    <el-button type="danger" disabled>危险按钮</el-button>
+                    <el-button disabled>{{this.$t('button.defaultButton')}}</el-button>
+                    <el-button type="primary" disabled>{{this.$t('button.maintButton')}}</el-button>
+                    <el-button type="success" disabled>{{this.$t('button.successtButton')}}</el-button>
+                    <el-button type="info" disabled>{{this.$t('button.infoButton')}}</el-button>
+                    <el-button type="warning" disabled>{{this.$t('button.warningButton')}}</el-button>
+                    <el-button type="danger" disabled>{{this.$t('button.dangerButton')}}</el-button>
                 </el-col>
                 <el-col>
-                    <el-button plain disabled>朴素按钮</el-button>
-                    <el-button type="primary" plain disabled>主要按钮</el-button>
-                    <el-button type="success" plain disabled>成功按钮</el-button>
-                    <el-button type="info" plain disabled>信息按钮</el-button>
-                    <el-button type="warning" plain disabled>警告按钮</el-button>
-                    <el-button type="danger" plain disabled>危险按钮</el-button>
+                    <el-button plain disabled>{{this.$t('button.simpleButton')}}</el-button>
+                    <el-button type="primary" plain disabled>{{this.$t('button.maintButton')}}</el-button>
+                    <el-button type="success" plain disabled>{{this.$t('button.successtButton')}}</el-button>
+                    <el-button type="info" plain disabled>{{this.$t('button.infoButton')}}</el-button>
+                    <el-button type="warning" plain disabled>{{this.$t('button.warningButton')}}</el-button>
+                    <el-button type="danger" plain disabled>{{this.$t('button.dangerButton')}}</el-button>
                 </el-col>
             </el-row>
         </div>
         <div class="box-shadow content-wrap">
             <el-row>
-                <h2>图标按钮</h2>
+                <h2>{{this.$t('page.components.button.iconButton')}}</h2>
                 <el-col>
                     <el-button type="primary" icon="el-icon-edit"></el-button>
                     <el-button type="primary" icon="el-icon-share"></el-button>
                     <el-button type="primary" icon="el-icon-delete"></el-button>
-                    <el-button type="primary" icon="el-icon-search">搜索</el-button>
-                    <el-button type="primary">上传<i class="el-icon-upload el-icon--right"></i></el-button>
+                    <el-button type="primary" icon="el-icon-search">{{this.$t('button.searchButton')}}</el-button>
+                    <el-button type="primary">{{this.$t('button.uploadButton')}}<i class="el-icon-upload el-icon--right"></i></el-button>
                 </el-col>
             </el-row>
         </div>
         <div class="box-shadow content-wrap">
             <el-row>
-                <h2>按钮组</h2>
+                <h2>{{this.$t('page.components.button.buttons')}}</h2>
                 <el-col>
                     <el-button-group>
-                        <el-button type="primary" icon="el-icon-arrow-left">上一页</el-button>
-                        <el-button type="primary">下一页<i class="el-icon-arrow-right el-icon--right"></i></el-button>
+                        <el-button type="primary" icon="el-icon-arrow-left">{{this.$t('button.prevPageButton')}}</el-button>
+                        <el-button type="primary">{{this.$t('button.nextPageButton')}}<i class="el-icon-arrow-right el-icon--right"></i></el-button>
                     </el-button-group>
                     <el-button-group>
                         <el-button type="primary" icon="el-icon-edit"></el-button>
@@ -88,35 +88,35 @@
         </div>
         <div class="box-shadow content-wrap">
             <el-row>
-                <h2>不同尺寸</h2>
+                <h2>{{this.$t('page.components.button.size')}}</h2>
                 <el-col>
-                    <el-button>默认按钮</el-button>
-                    <el-button size="medium">中等按钮</el-button>
-                    <el-button size="small">小型按钮</el-button>
-                    <el-button size="mini">超小按钮</el-button>
+                    <el-button>{{this.$t('button.defaultButton')}}</el-button>
+                    <el-button size="medium">{{this.$t('button.secondButton')}}</el-button>
+                    <el-button size="small">{{this.$t('button.smallButton')}}</el-button>
+                    <el-button size="mini">{{this.$t('button.superSmallButton')}}</el-button>
                 </el-col>
                 <el-col>
-                    <el-button round>默认按钮</el-button>
-                    <el-button size="medium" round>中等按钮</el-button>
-                    <el-button size="small" round>小型按钮</el-button>
-                    <el-button size="mini" round>超小按钮</el-button>
-                </el-col>
-            </el-row>
-        </div>
-        <div class="box-shadow content-wrap">
-            <el-row>
-                <h2>文字按钮</h2>
-                <el-col>
-                    <el-button type="text">文字按钮</el-button>
-                    <el-button type="text" disabled>文字按钮</el-button>
+                    <el-button round>{{this.$t('button.defaultButton')}}</el-button>
+                    <el-button size="medium" round>{{this.$t('button.secondButton')}}</el-button>
+                    <el-button size="small" round>{{this.$t('button.smallButton')}}</el-button>
+                    <el-button size="mini" round>{{this.$t('button.superSmallButton')}}</el-button>
                 </el-col>
             </el-row>
         </div>
         <div class="box-shadow content-wrap">
             <el-row>
-                <h2>加载中</h2>
+                <h2>{{this.$t('button.textButton')}}</h2>
                 <el-col>
-                    <el-button type="primary" :loading="true">加载中</el-button>
+                    <el-button type="text">{{this.$t('button.textButton')}}</el-button>
+                    <el-button type="text" disabled>{{this.$t('button.textButton')}}</el-button>
+                </el-col>
+            </el-row>
+        </div>
+        <div class="box-shadow content-wrap">
+            <el-row>
+                <h2>{{this.$t('button.loadingButton')}}</h2>
+                <el-col>
+                    <el-button type="primary" :loading="true">{{this.$t('button.loadingButton')}}</el-button>
                 </el-col>
             </el-row>
         </div>
